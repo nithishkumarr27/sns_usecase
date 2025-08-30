@@ -71,7 +71,7 @@ const StickyScrollSection = () => {
             key={showSecondImage ? "second" : "first"}
             src={showSecondImage ? "/images/puzzle_2.png" : "/images/puzzle.png"}
             alt="Sticky Visual"
-           className={`w-[400px] h-auto rounded-2xl shadow-lg ${
+           className={`w-[400px] h-auto  ${
         !showSecondImage ? "mt-[-40px] max-sm:mt-[-200px]" : "mt-20"
       }`}
             initial={{ opacity: 0 }}

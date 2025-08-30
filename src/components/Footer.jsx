@@ -12,7 +12,7 @@ export default function Footer() {
         {/* Logo */}
         <div>
           <img
-            src="public/images/square_logo.png" // Replace with your actual logo path
+            src="/images/square_logo.png" // Replace with your actual logo path
             alt="SNS Square"
             className="w-46 mb-6"
           />
