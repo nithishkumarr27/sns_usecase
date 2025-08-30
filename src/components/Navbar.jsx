@@ -23,7 +23,7 @@ const Header = () => {
             Home
           </NavLink>
           <NavLink to="https://jw03wzfg-3000.inc1.devtunnels.ms/" className={linkClasses} target='blank'> 
-            Agent workbench
+            Agent Workbench
           </NavLink>
           <NavLink to="/usecase" className={linkClasses}>
             Use Case
