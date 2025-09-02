@@ -19,7 +19,7 @@ export default function AppRoutes() {
       <Route path="/usecase" element={<UseCase />} />
       <Route path="/usecase/:id" element={<UseCaseDetail />} />
       <Route path="/life-at-sns" element={<LifeAtSNSSquare />} />
-      {/* <Route path="/agentworkbench" element={<AgentWorkbench />} /> */}
+      {/* <Route path="/agentworkbench" element={<CategoriesAgents />} /> */}
       <Route path="/agent-workbench" element={<AgentWorkbenchLayout />}>
         {/* Landing Page */}
         <Route index element={<AgentWorkbenchIndex />} />
@@ -30,7 +30,7 @@ export default function AppRoutes() {
             <Route index element={<Categories />} />
 
             {/* Category Details */}
-            <Route path=":subcategoryId/agents" element={<CategoriesAgents />} />
+            {/* <Route path=":subcategoryId/agents" element={<CategoriesAgents />} /> */}
           
          </Route>
         </Route>
@@ -39,6 +39,7 @@ export default function AppRoutes() {
 
         {/* Agent Details */}
         <Route path=":category/:categoryId/:subcategoryId/:agentId" element={<AgentsDetails />} />
+        <Route path=":category/:categoryId/:subcategoryId/agents" element={<CategoriesAgents />} />
     </Route>
     </Routes>
   );

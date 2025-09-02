@@ -2,35 +2,37 @@ import React from 'react'
 import Button from '../../components/ui/Button'
 import EditText from '../../components/ui/EditText'
 
+const agentCards = [
+  {
+    id: 1,
+    title: 'Summarization & Content Handling',
+    description: 'Increased conversion by 32% with adaptive shopping agents'
+  },
+  {
+    id: 2,
+    title: 'Summarization & Content Handling',
+    description: 'Increased conversion by 32% with adaptive shopping agents'
+  },
+  {
+    id: 3,
+    title: 'Summarization & Content Handling',
+    description: 'Increased conversion by 32% with adaptive shopping agents'
+  },
+  {
+    id: 4,
+    title: 'Summarization & Content Handling',
+    description: 'Increased conversion by 32% with adaptive shopping agents'
+  }
+];
+
 const CategoriesAgents = () => {
   return (
     <div>
-      <div className="flex flex-col gap-[29px] sm:gap-[58px] justify-start items-center w-full max-w-[615px] sm:max-w-[1230px] mx-auto">
+      <div className="flex flex-col gap-[29px] sm:gap-[58px] justify-start items-center w-full max-w-[618px] sm:max-w-[1230px] mx-auto">
           {/* Agent Categories Section */}
           <div className="flex flex-col gap-[31px] sm:gap-[62px] justify-start items-center w-full">
             {/* Category Buttons and Description */}
             <div className="flex flex-col gap-[16px] sm:gap-[32px] justify-start items-center w-full">
-              {/* Category Toggle Buttons */}
-              <div className="flex flex-row gap-[11px] sm:gap-[22px] justify-center items-center w-auto">
-                <Button 
-                  variant="primary"
-                  size="medium"
-                  className="text-[14px] sm:text-[16px] font-semibold leading-[18px] sm:leading-[20px] text-global-8 font-inter rounded-[26px] text-white px-[12px] sm:px-[24px] py-[7px] sm:py-[14px] bg-[linear-gradient(90deg, #064EE3 0%, #3D76EC 100%)];
-"
-                  onClick={() => {}}
-                >
-                  Foundation Agents
-                </Button>
-                <Button 
-                  variant="outline"
-                  size="medium"
-                  className="text-[14px] sm:text-[16px] font-semibold leading-[18px] sm:leading-[20px] text-global-5 font-inter rounded-[26px] px-[12px] sm:px-[24px] py-[7px] sm:py-[14px] border border-[Blue] bg-global-2"
-                  onClick={() => {}}
-                >
-                  Industry-Specific Agents
-                </Button>
-              </div>
-
               {/* Foundational Categories Description */}
               <div className="flex flex-row gap-[8px] sm:gap-[16px] justify-center items-center w-full">
                 <div className="bg-global-1 rounded-[16px] p-[10px] sm:p-[20px] w-[50px] sm:w-[100px] h-[50px] sm:h-[100px] flex justify-center items-center">
