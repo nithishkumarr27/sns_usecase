@@ -16,7 +16,7 @@ foundational:[
           id: "document-classification",
           name: "Document Classification Agent",
           summary: "Categorize documents by type with confidence and routing hints.",
-          image: "/undraw_add-document_oqbr.png",
+          image: "/placeholder.jpg",
           solutions: [
             "Multi-label classification",
             "Confidence thresholds & fallback",

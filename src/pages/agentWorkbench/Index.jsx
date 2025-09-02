@@ -198,7 +198,7 @@ if (category === "industry-specific-agents") {
         // Handle navigation or modal opening here
     };
   return (
-    <div className="min-h-screen lg:-mt-40 bg-white py-8">
+    <div className="min-h-screen bg-white py-8">
       <div className="max-w-7xl mx-auto px-4">
       
         
