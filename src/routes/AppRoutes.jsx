@@ -4,6 +4,7 @@ import UseCase from "../pages/UseCase/UseCase";
 import UseCaseDetail from "../pages/UseCase/UseCaseDetail";
 import LifeAtSNSSquare from "../pages/LifeAtSNSSquare";
 import HomePage from '../pages/Home';
+import AgentWorkbench from "../pages/AwpPage3";
 
 
 export default function AppRoutes() {
@@ -13,6 +14,7 @@ export default function AppRoutes() {
       <Route path="/usecase" element={<UseCase />} />
       <Route path="/usecase/:id" element={<UseCaseDetail />} />
       <Route path="/life-at-sns" element={<LifeAtSNSSquare />} />
+      <Route path="/agentworkbench" element={<AgentWorkbench />} />
     </Routes>
   );
 }

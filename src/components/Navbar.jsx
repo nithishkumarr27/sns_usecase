@@ -22,7 +22,7 @@ const Header = () => {
           <NavLink to="/" className={linkClasses}>
             Home
           </NavLink>
-          <NavLink to="https://jw03wzfg-3000.inc1.devtunnels.ms/" className={linkClasses} target='blank'> 
+          <NavLink to="/agentworkbench" className={linkClasses}> 
             Agent Workbench
           </NavLink>
           <NavLink to="/usecase" className={linkClasses}>
