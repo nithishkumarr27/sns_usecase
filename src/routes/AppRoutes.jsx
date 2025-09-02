@@ -20,12 +20,13 @@ export default function AppRoutes() {
       <Route path="/agent-workbench" element={<AgentWorkbenchLayout />}>
         {/* Landing Page */}
         <Route index element={<AgentWorkbenchIndex />} />
-         <Route path="categories" element={<Sidebar />}>
+         <Route path="categories/:categoryId" element={<Sidebar />}>
           {/* Categories List */}
           <Route index element={<Categories />} />
 
           {/* Category Details */}
-          <Route path="categories/:categoryId" element={<CategoriesDetails />} />
+          <Route path="agents" element={<CategoriesDetails />} />
+          <Route path="agents/:agentId" element={<CategoriesDetails />} />
          </Route>
      
 
