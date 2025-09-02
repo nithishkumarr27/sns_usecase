@@ -189,6 +189,10 @@ if (category === "industry-specific-agents") {
          if(!category){
             category="foundation-agents"
         }
+        if(category==="industry-specific-agents") {
+            navigate(`/agent-workbench/${category}/${categoryId}/agents`);
+            return;
+        }
         navigate(`/agent-workbench/${category}/${categoryId}`);
         console.log(`Learning more about category: ${categoryId}`);
         // Handle navigation or modal opening here

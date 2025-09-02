@@ -25,11 +25,13 @@ export default function AppRoutes() {
           <Route path=":categoryId" element={<Sidebar />}>
             {/* Categories List */}
             <Route index element={<Categories />} />
-
+            <Route path="agents" element={<CategoriesAgents />} />
             {/* Category Details */}
             <Route path=":subcategoryId/agents" element={<CategoriesAgents />} />
+
           
          </Route>
+
         </Route>
         
      
