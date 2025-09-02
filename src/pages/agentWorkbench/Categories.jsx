@@ -292,7 +292,7 @@ const allCategoriesData = {
 
       {/* No data message */}
       {isSubtopicSelected && !allCategoriesData[selectedSubtopic] && (
-        <div className="text-center py-12">
+        <div className="text-center py-12"> 
           <div className="text-gray-400 mb-4">
             <Building2 className="w-16 h-16 mx-auto" />
           </div>
