@@ -5,7 +5,7 @@ import UseCaseDetail from "../pages/UseCase/UseCaseDetail";
 import LifeAtSNSSquare from "../pages/LifeAtSNSSquare";
 import HomePage from '../pages/Home';
 import AgentsDetails from "../pages/agentWorkbench/AgentsDetails";
-import CategoriesDetails from "../pages/agentWorkbench/CategoriesDetails";
+import CategoriesAgents from "../pages/agentWorkbench/CategoriesAgents";
 import Categories from "../pages/agentWorkbench/Categories";
 import AgentWorkbenchIndex from "../pages/agentWorkbench/Index";
 import AgentWorkbenchLayout from "../pages/agentWorkbench/AgentWorkbenchLayout";
@@ -25,8 +25,8 @@ export default function AppRoutes() {
           <Route index element={<Categories />} />
 
           {/* Category Details */}
-          <Route path="agents" element={<CategoriesDetails />} />
-          <Route path="agents/:agentId" element={<CategoriesDetails />} />
+          <Route path="agents" element={<CategoriesAgents />} />
+         
          </Route>
      
 
