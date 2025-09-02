@@ -58,7 +58,7 @@ export default function Footer() {
           <ul className="space-y-2 text-gray-300 text-sm">
             <li>
               <Link 
-                to="https://jw03wzfg-3000.inc1.devtunnels.ms/" 
+                to="/agent-workbench" 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
                 Agent Workbench
