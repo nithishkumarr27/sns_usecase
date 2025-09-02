@@ -289,6 +289,7 @@ const allCategoriesData = {
         ))}
       </div>
 
+
       {/* No data message */}
       {isSubtopicSelected && !allCategoriesData[selectedSubtopic] && (
         <div className="text-center py-12">
