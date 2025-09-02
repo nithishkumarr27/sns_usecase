@@ -22,7 +22,7 @@ const Header = () => {
           <NavLink to="/" className={linkClasses}>
             Home
           </NavLink>
-          <NavLink to="/agentworkbench" className={linkClasses}> 
+          <NavLink to="/agent-workbench" className={linkClasses} > 
             Agent Workbench
           </NavLink>
           <NavLink to="/usecase" className={linkClasses}>
