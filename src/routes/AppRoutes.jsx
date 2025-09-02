@@ -19,7 +19,7 @@ export default function AppRoutes() {
       <Route path="/usecase" element={<UseCase />} />
       <Route path="/usecase/:id" element={<UseCaseDetail />} />
       <Route path="/life-at-sns" element={<LifeAtSNSSquare />} />
-      <Route path="/agentworkbench" element={<AgentWorkbench />} />
+      {/* <Route path="/agentworkbench" element={<AgentWorkbench />} /> */}
       <Route path="/agent-workbench" element={<AgentWorkbenchLayout />}>
         {/* Landing Page */}
         <Route index element={<AgentWorkbenchIndex />} />
