@@ -1,5 +1,5 @@
 export default {
-functional:[
+foundational:[
 {
   id: "doc-knowledge",
   name: "Document & Knowledge Management",
