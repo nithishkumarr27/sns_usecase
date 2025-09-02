@@ -28,9 +28,11 @@ const StickyScrollSection = () => {
   }, [scrollYProgress]);
 
   return (
-    <div
+    <div>
+{/* ---------------- DESKTOP VERSION ---------------- */}
+ <div
       ref={containerRef}
-      className="relative sm:flex w-full sm:min-h-[120vh] px-6 xl:px-[100px] 2xl:px-[400px]"
+      className="max-sm:hidden relative  sm:flex w-full sm:min-h-[120vh] px-6 xl:px-[100px] 2xl:px-[400px]"
     >
       {/* Left content */}
       <div className="flex-1 flex mx-auto flex-col justify-center ">
@@ -85,6 +87,46 @@ const StickyScrollSection = () => {
         </AnimatePresence>
       </div>
     </div>
+
+
+{/*  ---------------- MOBILE VERSION ---------------- */}
+
+
+<div className="flex mt-20 flex-col gap-12 sm:hidden px-6">
+      {/* First content + image */}
+      <div>
+        <h2 className="text-2xl font-bold mb-6">
+          The Biggest Challenge for Modern Enterprises is Mastering Complexity
+        </h2>
+        <p className="text-base text-black/70 mb-6">
+          Businesses today must innovate faster, deliver seamless customer experiences, and scale efficiently while navigating dynamic markets and evolving technologies.
+        </p>
+        <img
+          src="/images/Container.png"
+          alt="Visual 1"
+          className="w-full h-auto rounded-[22px]"
+        />
+      </div>
+
+      {/* Second content + image */}
+      <div>
+        <h2 className="text-2xl font-bold mb-6">
+          Our Key to Unlock the Future: The Agentic Business Blueprint (ABB)
+        </h2>
+        <p className="text-base text-black/70 mb-6">
+          The Agentic Business Blueprint (ABB) is our framework to align business goals with adaptive strategies, agentic intelligence, and automation.
+        </p>
+        <img
+          src="/images/Container_2.png"
+          alt="Visual 2"
+          className="w-full h-auto rounded-[22px]"
+        />
+      </div>
+    </div>
+
+
+    </div>
+   
   );
 };
 
