@@ -10,8 +10,6 @@ import Categories from "../pages/agentWorkbench/Categories";
 import AgentWorkbenchIndex from "../pages/agentWorkbench/Index";
 import AgentWorkbenchLayout from "../pages/agentWorkbench/AgentWorkbenchLayout";
 import Sidebar from "../pages/agentWorkbench/components/Sidebar";
-import AgentWorkbench from "../pages/AwpPage3";
-
 export default function AppRoutes() {
   return (
     <Routes>
@@ -19,7 +17,6 @@ export default function AppRoutes() {
       <Route path="/usecase" element={<UseCase />} />
       <Route path="/usecase/:id" element={<UseCaseDetail />} />
       <Route path="/life-at-sns" element={<LifeAtSNSSquare />} />
-      {/* <Route path="/agentworkbench" element={<CategoriesAgents />} /> */}
       <Route path="/agent-workbench" element={<AgentWorkbenchLayout />}>
         {/* Landing Page */}
         <Route index element={<AgentWorkbenchIndex />} />
@@ -28,11 +25,13 @@ export default function AppRoutes() {
           <Route path=":categoryId" element={<Sidebar />}>
             {/* Categories List */}
             <Route index element={<Categories />} />
-
+            <Route path="agents" element={<CategoriesAgents />} />
             {/* Category Details */}
-            {/* <Route path=":subcategoryId/agents" element={<CategoriesAgents />} /> */}
+            <Route path=":subcategoryId/agents" element={<CategoriesAgents />} />
+
           
          </Route>
+
         </Route>
         
      
