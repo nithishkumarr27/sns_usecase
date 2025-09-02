@@ -1,16 +1,34 @@
-import React,{useState}from "react";
+import React,{useEffect, useState}from "react";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/ui/Button"
+import { useLocation ,useParams} from "react-router-dom";
 const AgentWorkbenchLayout = () => {
+     const { category } = useParams();
     const [selected, setSelected] = useState("Foundation Agents");
   const navigate = useNavigate();
+// const [slug, setSlug] = useState("foundation-agents");
 
-  const handleClick = (option) => {
-    setSelected(option);
-    navigate("/agent-workbench", { state: { type: option } });
-  };
+const handleClick = (option) => {
+    let slug;
+if(option==="Foundation Agents") {
+    slug="foundation-agents"
+} else if(option==="Industry-Specific Agents") {
+    slug="industry-specific-agents"
+}
+  setSelected(option.label);
 
+  navigate(`/agent-workbench/${slug}`, { state: { type: option.label } });
+};
+
+useEffect(() => {
+    if(category==="foundation-agents") {
+        setSelected("Foundation Agents")
+    }
+    else if(category==="industry-specific-agents") {
+        setSelected("Industry-Specific Agents")
+    }
+}, [category]);
   const options = ["Foundation Agents", "Industry-Specific Agents"];
   return (
     <div className="min-h-screen w-full items-center flex flex-col">

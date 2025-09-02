@@ -1,5 +1,6 @@
 import React from "react";
 import agentsData from "../../../public/data/agentsData";
+import { useParams,useNavigate } from "react-router-dom";
 // Utility function to combine class names
 const cn = (...classes) => {
   return classes.filter(Boolean).join(' ');
@@ -62,12 +63,13 @@ const CategoryCard = ({ category, onLearnMore, showCount = true }) => {
   const agentCount = category.subCategories ? getTotalAgentCount() : getIndustryAgentCount();
 
   return (
-    <div className="relative group">
+    <div className="relative group0">
       {/* Outer container with padding to accommodate the number badge */}
       <div className="relative p-3">
-        <Card className="flex flex-col h-full  border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1 rounded-2xl overflow-hidden">
+       <Card className="flex flex-col h-full min-h-[420px] w-[110%] border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1 rounded-2xl overflow-hidden">
+
           {/* Image/Icon Area */}
-          <div className="h-40 sm:h-48 m-6 rounded-lg bg-gradient-to-br from-blue-100 to-indigo-200 flex items-center justify-center relative overflow-hidden">
+          <div className="h-40 sm:h-48 m-6 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center relative overflow-hidden">
             {category.image && category.image !== "/placeholder.jpg" ? (
               <img 
                 src={category.image} 
@@ -81,17 +83,17 @@ const CategoryCard = ({ category, onLearnMore, showCount = true }) => {
             )}
           </div>
 
-          <CardContent className="flex-1 flex flex-col justify-between p-4 sm:p-6">
+          <CardContent className="flex-1 flex flex-col -mt-6 justify-between p-4 sm:p-6">
             <div className="space-y-3">
               <h3 className="font-semibold text-gray-900 text-lg sm:text-xl leading-tight">
                 {category.name}
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed leading-relaxed line-clamp-3">
                 {category.description}
               </p>
             </div>
 
-            <div className="mt-6">
+            <div className=" -ml-4">
               <Button
                 variant="link"
                 onClick={() => onLearnMore(category.id)}
@@ -105,7 +107,7 @@ const CategoryCard = ({ category, onLearnMore, showCount = true }) => {
         
         {/* Number Badge - positioned half outside the card */}
         {showCount && agentCount > 0 && (
-          <div className="absolute top-4 right-9 z-20">
+          <div className="absolute top-5 right-0 z-20">
             <div className="bg-blue-600 text-white rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center text-sm sm:text-base font-bold shadow-lg border-2 border-white">
               {agentCount}
             </div>
@@ -122,7 +124,7 @@ const CategoryGrid = ({ data, onLearnMore, showCounts = true, showExploreMore = 
   
   // Combine functional and industry categories
   const allCategories = [
-    ...(data.functional || []),
+    ...(data.foundational || []),
     ...(data.industry || [])
   ];
 
@@ -169,19 +171,32 @@ const CategoryGrid = ({ data, onLearnMore, showCounts = true, showExploreMore = 
 
 
 // Demo Component
-export default function CategoryGridDemo() {
-  const handleLearnMore = (categoryId) => {
-    console.log(`Learning more about category: ${categoryId}`);
-    // Handle navigation or modal opening here
-  };
+export default function CategoryGridoverall() {
+const navigate = useNavigate();
+ 
+ const { category } = useParams();
+  let selectedCategory;
+if (category === "industry-specific-agents") {
+  selectedCategory = { industry: agentsData.industry };
+} else if (category === "foundation-agents") {
+  selectedCategory = { foundational: agentsData.foundational };
+} else {
+  // fallback if no category param
+  selectedCategory = { foundational: agentsData.foundational };
+}
 
+    const handleLearnMore = (categoryId) => {
+        navigate(`/agent-workbench/${category}/${categoryId}`);
+        console.log(`Learning more about category: ${categoryId}`);
+        // Handle navigation or modal opening here
+    };
   return (
-    <div className="min-h-screen bg-white py-8">
+    <div className="min-h-screen lg:-mt-40 bg-white py-8">
       <div className="max-w-7xl mx-auto px-4">
       
         
         <CategoryGrid 
-          data={agentsData} 
+          data={selectedCategory} 
           onLearnMore={handleLearnMore}
           showCounts={true}
           showExploreMore={true}
