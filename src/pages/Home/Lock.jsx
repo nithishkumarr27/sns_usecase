@@ -70,36 +70,18 @@ const StickyScrollSection = () => {
       {/* Right sticky image */}
       <div className="w-1/2 flex justify-center items-center sticky sm:top-20 sm:h-screen">
         <AnimatePresence mode="wait">
-          <div className="relative">
-            <motion.img
-              key={showSecondImage ? "second" : "first"}
-              src={showSecondImage ? "/images/Container_2.png" : "/images/Container.png"}
-              alt="Sticky Visual"
-              className={`w-[800px] h-auto rounded-[22px] ${
-                !showSecondImage ? "mt-[-40px] max-sm:mt-[-200px]" : "mt-20"
-              }`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.1 }}
-            />
-            {/* Gradient overlay */}
-            <motion.div
-              key={`gradient-${showSecondImage ? "second" : "first"}`}
-              className={`absolute inset-0 w-[800px] h-auto rounded-[22px] ${
-                !showSecondImage ? "mt-[-40px] max-sm:mt-[-200px]" : "mt-20"
-              }`}
-              style={{
-                background: 'linear-gradient(115.91deg, #4A8FFF 7.06%, #CDAEFE 98.91%)',
-                mixBlendMode: 'multiply',
-                opacity: 0.3
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.3 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.1 }}
-            />
-          </div>
+          <motion.img
+            key={showSecondImage ? "second" : "first"}
+            src={showSecondImage ? "/images/Container_2.png" : "/images/Container.png"}
+            alt="Sticky Visual"
+            className={`w-[800px] h-auto rounded-[22px] ${
+              !showSecondImage ? "mt-[-40px] max-sm:mt-[-200px]" : "mt-20"
+            }`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.1 }}
+          />
         </AnimatePresence>
       </div>
     </div>
