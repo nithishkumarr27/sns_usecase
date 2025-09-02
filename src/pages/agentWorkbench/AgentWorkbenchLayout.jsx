@@ -35,10 +35,10 @@ useEffect(() => {
   return (
     <div className="min-h-screen w-full items-center flex flex-col">
       {/* Common Sidebar */}
-      <section className="w-full mb-10 bg-[linear-gradient(359deg,#ffffff_0%,_#e3ebff_100%)] h-[550px] relative">
+      <section className="w-full mb-20 bg-[linear-gradient(359deg,#ffffff_0%,_#e3ebff_100%)] h-[550px] relative">
         <div
           className="w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[560px] bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero_frame.png')" }}
+          style={{ backgroundImage: "url('/images/usecase_hero_frame.png')" }}
         >
           <div className="w-full max-w-[1224px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center items-center">
             <div className="flex flex-col gap-[10px] sm:gap-[40px] md:gap-[54px] mt-40 justify-start items-center w-full text-center">

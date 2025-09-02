@@ -117,7 +117,7 @@ const CategoriesAgents = () => {
                           </h4>
                           <a 
                             href="#" 
-                            className="text-[14px] sm:text-[16px] font-normal leading-[18px] sm:leading-[20px] text-global-7 font-inter text-[#3E57DA] hover:underline"
+                            className="text-[14px] sm:text-[16px] mt-6 pr-5 font-normal leading-[18px] sm:leading-[20px] text-global-7 font-inter text-[#3E57DA] "
                           >
                             Read more
                           </a>

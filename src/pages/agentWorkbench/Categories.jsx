@@ -39,10 +39,8 @@ const Categories = () => {
   if (category === "industry-specific-agents") {
     selectedCategory = { industry: agentsData.industry };
   } else if (category === "foundation-agents") {
-    console.log("Foundation Agents Data:", agentsData.foundational);
     selectedCategory = { foundational: agentsData.foundational };
   } else {
-    console.log("Fallback to Foundation Agents Data:", agentsData.foundational);
     // fallback if no category param
     selectedCategory = { foundational: agentsData.foundational };
   }
@@ -142,7 +140,7 @@ const Categories = () => {
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {displayData.map((item, idx) => (
           <div
             key={idx}
@@ -150,7 +148,7 @@ const Categories = () => {
           >
             {/* Image Placeholder with Badge */}
             <div className="h-40 w-full bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-xl mb-5 relative">
-              <span className="absolute top-4 right-4 bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-full">
+              <span className="absolute top-5 right-0 bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-full">
                 {item.count}
               </span>
             </div>
