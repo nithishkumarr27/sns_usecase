@@ -21,6 +21,7 @@ export default function AppRoutes() {
         {/* Landing Page */}
         <Route index element={<AgentWorkbenchIndex />} />
         <Route path=":category" >
+          <Route index element={<AgentWorkbenchIndex />}/>
           <Route path=":categoryId" element={<Sidebar />}>
             {/* Categories List */}
             <Route index element={<Categories />} />
