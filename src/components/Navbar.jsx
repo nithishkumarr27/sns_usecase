@@ -87,7 +87,7 @@ const Header = () => {
               Home
             </NavLink>
             <NavLink 
-              to="https://jw03wzfg-3000.inc1.devtunnels.ms/" 
+              to="/agent-workbench" 
               className={linkClasses} 
               onClick={() => setMenuOpen(false)} 
               target='blank'
