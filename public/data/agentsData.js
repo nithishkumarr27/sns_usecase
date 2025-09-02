@@ -1,4 +1,4 @@
-export default agentsData={
+export default {
 functional:[
 {
   id: "doc-knowledge",
