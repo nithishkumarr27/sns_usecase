@@ -9,7 +9,10 @@ function App() {
       <main className="">
         <AppRoutes />
       </main>
-      <CTA/>
+    <div id="cta-section">
+      <CTA />
+    </div>
+      {/* <CTA/> */}
       <Footer />
     </div>
   );

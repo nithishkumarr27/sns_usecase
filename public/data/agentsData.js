@@ -1,5 +1,5 @@
-export default agentsData={
-functional:[
+export default {
+foundational:[
 {
   id: "doc-knowledge",
   name: "Document & Knowledge Management",

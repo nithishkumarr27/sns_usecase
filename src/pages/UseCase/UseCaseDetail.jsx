@@ -247,42 +247,43 @@ export default function UseCaseDetail() {
         <div 
             className="min-h-screen mt-20  font-sans text-gray-800"
             style={{
-                 background: 'linear-gradient(180deg, #aab6e2bd 0px, #c2cce79f 100px, #ffffffff 200px)'
+                 background: 'linear-gradient(180deg, #aab6e240 0px, #c2cce730 100px, #ffffffff 200px)'
             }}
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
                 
 
                 <div className="flex flex-col lg:flex-row lg:space-x-8 xl:space-x-12">
-                    {/* Left Sidebar Navigation */}
-                    <aside className="w-full lg:w-2/7 mb-8 lg:mb-0">
+                    {/* Left Sidebar Navigation - Updated to match UseCase component */}
+                    <aside className="w-full lg:w-72 mb-8 lg:mb-0">
                         <div className="sticky top-4 lg:top-12">
-                            <nav className={`transition-all duration-1000 ease-out ${
-                                useCaseData ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-                            }`}>
-                                <ul className="flex flex-row lg:flex-col space-x-2 lg:space-x-0 lg:space-y-1 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
-                                    {useCaseData.sections.map((section, index) => (
-                                        <li 
-                                            key={section.id} 
-                                            className={`flex-shrink-0 lg:flex-shrink transition-all duration-500 ease-out ${
-                                                useCaseData ? 'opacity-100 translate-y-0' : 'opacity-0 translat  e-y-4'
+                            <div className="flex flex-col w-full items-start gap-4">
+                                {useCaseData.sections.map((section, index) => (
+                                    <button
+                                        key={section.id}
+                                        onClick={() => handleNavClick(section.id)}
+                                        className={`flex items-center justify-start gap-2.5 pl-4 pr-6 py-5 md:py-7 w-full rounded-2xl overflow-hidden focus:outline-none focus:ring-0 focus:border-none focus-visible:outline-none focus-visible:ring-0 active:outline-none active:ring-0 border-none outline-none transition-all duration-500 ease-out ${
+                                            activeSection === section.id ? "bg-[#e6edfc]" : "bg-transparent"
+                                        } ${
+                                            useCaseData ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                                        }`}
+                                        style={{ 
+                                            outline: 'none', 
+                                            border: 'none', 
+                                            boxShadow: 'none',
+                                            transitionDelay: `${index * 100}ms`
+                                        }}
+                                    >
+                                        <div
+                                            className={`font-Manrope font-semibold text-base md:text-lg tracking-[-0.60px] leading-6 whitespace-nowrap text-left ${
+                                                activeSection === section.id ? "text-[#064EE3]" : "text-[#04040469]"
                                             }`}
-                                            style={{ transitionDelay: `${index * 100}ms` }}
                                         >
-                                            <button
-                                                onClick={() => handleNavClick(section.id)}
-                                                className={`w-full text-left px-3 sm:px-4 py-2 sm:py-3 lg:py-4 rounded-[14px] text-[18px] font-medium transition-colors duration-200 whitespace-nowrap lg:whitespace-normal ${
-                                                    activeSection === section.id
-                                                        ? 'bg-white text-gray-600 font-semibold'
-                                                        : 'text-gray-700 hover:bg-white/20 hover:text-gray-800'
-                                                }`}
-                                            >
-                                                {section.title}
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </nav>
+                                            {section.title}
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     </aside>
 
@@ -453,13 +454,10 @@ export default function UseCaseDetail() {
           }`}
           style={{ transitionDelay: `${600 + index * 150}ms` }}
         >
-          <div className="h-full w-full bg-white rounded-2xl p-6 flex flex-col justify-between transition-transform transform duration-300 hover:scale-105 ">
-            <UseCaseCard
-              useCase={relatedCase}
-              onLearnMore={handleLearnMore}
-              className="h-full w-full"
-            />
-          </div>
+          <UseCaseCard
+            useCase={relatedCase}
+            onLearnMore={handleLearnMore}
+          />
         </div>
       ))}
     </div>
