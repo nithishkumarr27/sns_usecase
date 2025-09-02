@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { ChevronDown, ChevronUp, Search } from "lucide-react";
 
-
+import { Building2 } from "lucide-react";
 
 // Custom scrollbar styles
 const scrollbarStyles = `
@@ -138,100 +138,98 @@ const Sidebar = () => {
   return (
     <>
       <style>{scrollbarStyles}</style>
-    <CategoryContext.Provider value={{ selectedSubtopic, activeCategory }}>
-      <div className="flex h-screen w-full bg-white">
-        {/* Sidebar */}
-       <aside className="w-96 bg-white p-6 flex flex-col border-r border-gray-100">
-          <div className="mb-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-1">
-              Categories
-            </h2>
-            <p className="text-sm text-gray-500">Browse relevant agents</p>
-          </div>
+      <CategoryContext.Provider value={{ selectedSubtopic, activeCategory }}>
+        <div className="flex h-screen w-full bg-white">
 
-          {/* Search */}
-          <div className="relative mb-6">
-            <Search
-              className="absolute left-6 top-6 text-gray-400 w-5 h-5"
-              size={18}
-            />
-            <input
-              type="text"
-              placeholder="Search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-14 pr-4 py-5 rounded-lg bg-gray-100 h-16 text-gray-900 placeholder-gray-400 border-0 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+          {/* Sidebar */}
+          <aside className="w-96 bg-white p-6 flex flex-col border-r border-gray-100">
+            <div className="mb-6">
+              <h2 className="text-lg font-semibold text-gray-900 mb-1">
+                Categories
+              </h2>
+              <p className="text-sm text-gray-500">Browse relevant agents</p>
+            </div>
 
-          {/* Scrollable Category List */}
-          <div className="flex-1 overflow-y-auto scrollbar-custom">
-            <ul className="space-y-2">
-              {categories
-                .filter((cat) =>
-                  cat.name.toLowerCase().includes(search.toLowerCase())
-                )
-                .map((cat, idx) => (
-                  <li
-                    key={idx}
-                    className={`rounded-lg transition-colors ${
-                      activeCategory === cat.name ? "bg-blue-50" : ""
-                    }`}
-                  >
-                    {/* Category Header */}
-                    <div
-                      onClick={() => toggleCategory(cat.name)}
-                      className={`flex justify-between items-center cursor-pointer px-4 py-6 h-24 text-sm rounded-lg ${
-                        activeCategory === cat.name
-                          ? "text-blue-700 font-medium"
-                          : "text-gray-700 hover:bg-gray-50"
-                      }`}
+            {/* Search */}
+            <div className="relative mb-6">
+              <Search
+                className="absolute left-6 top-6 text-gray-400 w-5 h-5"
+                size={18}
+              />
+              <input
+                type="text"
+                placeholder="Search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full pl-14 pr-4 py-5 rounded-lg bg-gray-100 h-16 text-gray-900 placeholder-gray-400 border-0 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Scrollable Category List */}
+            <div className="flex-1 overflow-y-auto scrollbar-custom">
+              <ul className="space-y-2">
+                {categories
+                  .filter((cat) =>
+                    cat.name.toLowerCase().includes(search.toLowerCase())
+                  )
+                  .map((cat, idx) => (
+                    <li
+                      key={idx}
+                      className={`rounded-lg transition-colors ${activeCategory === cat.name ? "bg-blue-50" : ""
+                        }`}
                     >
-                      <span className="leading-tight">{cat.name}</span>
-                      {activeCategory === cat.name ? (
-                        <ChevronUp
-                          size={16}
-                          className="text-blue-600 flex-shrink-0 ml-2"
-                        />
-                      ) : (
-                        <ChevronDown
-                          size={16}
-                          className="text-gray-400 flex-shrink-0 ml-2"
-                        />
+                      {/* Category Header */}
+                      <div
+                        onClick={() => toggleCategory(cat.name)}
+                        className={`flex justify-between items-center cursor-pointer px-4 py-6 h-24 text-sm rounded-lg ${activeCategory === cat.name
+                            ? "text-blue-700 font-medium"
+                            : "text-gray-700 hover:bg-gray-50"
+                          }`}
+                      >
+                        <span className="leading-tight">{cat.name}</span>
+                        {activeCategory === cat.name ? (
+                          <ChevronUp
+                            size={16}
+                            className="text-blue-600 flex-shrink-0 ml-2"
+                          />
+                        ) : (
+                          <ChevronDown
+                            size={16}
+                            className="text-gray-400 flex-shrink-0 ml-2"
+                          />
+                        )}
+                      </div>
+
+                      {/* Subtopics */}
+                      {activeCategory === cat.name && (
+                        <ul className="space-y-1 pb-3 px-6">
+                          {cat.subtopics.map((sub, i) => (
+                            <li
+                              key={i}
+                              onClick={() => handleSubtopicClick(sub)}
+                              className={`h-12 w-full rounded-lg cursor-pointer transition-colors flex items-center px-6 text-sm ${selectedSubtopic === sub
+                                  ? "bg-white font-medium  shadow-sm"
+                                  : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                                }`}
+                            >
+                              {sub}
+                            </li>
+                          ))}
+                        </ul>
                       )}
-                    </div>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          </aside>
 
-                    {/* Subtopics */}
-                    {activeCategory === cat.name && (
-                      <ul className="space-y-1 pb-3 px-6">
-                        {cat.subtopics.map((sub, i) => (
-                          <li
-                            key={i}
-                            onClick={() => handleSubtopicClick(sub)}
-                            className={`h-12 w-full rounded-lg cursor-pointer transition-colors flex items-center px-6 text-sm ${
-                              selectedSubtopic === sub
-                                ? "bg-white font-medium  shadow-sm"
-                                : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
-                            }`}
-                          >
-                            {sub}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
-            </ul>
-          </div>
-        </aside>
-
-        {/* Main Content */}
-        <main className="flex-1 bg-gray-50 overflow-y-auto">
-          <Outlet />
-        </main>
-      </div>
-    </CategoryContext.Provider>
-     </>
+          {/* Main Content */}
+          <main className="flex-1  overflow-y-auto">
+            <Outlet />
+          </main>
+        </div>
+      </CategoryContext.Provider>
+    </>
   );
 };
 

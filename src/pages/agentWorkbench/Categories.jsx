@@ -203,24 +203,9 @@ const Categories = () => {
   const isSubtopicSelected = selectedSubtopic && allCategoriesData[selectedSubtopic];
 
   return (
-    <div className="p-8 h-[842px]">
+    <div className="p-8 h-[842px] w-[1226px]">
       {/* Header with Icon */}
-      <div className="flex  items-start gap-4 mb-8">
-        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-          <Building2 className="w-6 h-6 text-blue-600" />
-        </div>
-        <div>
-          <h1 className="text-2xl font-semibold text-gray-900 mb-2">
-            {isSubtopicSelected ? selectedSubtopic : "Foundational Categories"}
-          </h1>
-          <p className="text-gray-600 text-base leading-relaxed">
-            {isSubtopicSelected 
-              ? `Specialized agents and tools for ${selectedSubtopic.toLowerCase()}.`
-              : "Task-focused building blocks for extraction, summarization, routing, and orchestration."
-            }
-          </p>
-        </div>
-      </div>
+      
 
       {/* Categories Section Header */}
       <div className="mb-6">
@@ -233,7 +218,7 @@ const Categories = () => {
       </div>
 
       {/* Breadcrumb for subtopic selection */}
-      {isSubtopicSelected && (
+      {/* {isSubtopicSelected && (
         <div className="mb-6">
           <nav className="flex items-center space-x-2 text-sm text-gray-500">
             <span>{activeCategory}</span>
@@ -241,7 +226,7 @@ const Categories = () => {
             <span className="text-blue-600 font-medium">{selectedSubtopic}</span>
           </nav>
         </div>
-      )}
+      )} */}
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
