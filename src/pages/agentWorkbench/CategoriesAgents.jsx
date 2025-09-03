@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Button from '../../components/ui/Button'
 import EditText from '../../components/ui/EditText'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import agentsData from '../../../public/data/agentsData.js'
 
 const CategoriesAgents = () => {
   const { category, categoryId, subcategoryId } = useParams()
   const location = useLocation()
+  const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
   
   // Determine if this is industry-specific or foundational based on URL path
@@ -47,6 +48,15 @@ const CategoriesAgents = () => {
     )
     .slice(0, 5)
 
+  // Function to handle navigation to agent details
+  const handleAgentDetail = (agentId) => {
+    if (isIndustrySpecific) {
+      navigate(`/agent-workbench/industry-specific-agents/${categoryId}/agents/${agentId}`)
+    } else if (isFoundational) {
+      navigate(`/agent-workbench/foundation-agents/${categoryId}/${subcategoryId}/agents/${agentId}`)
+    }
+  }
+
   return (
     <div className="p-8 h-[842px] w-[1226px]">
       <div className="flex flex-col gap-[29px] sm:gap-[58px] justify-start items-center w-full">
@@ -56,13 +66,12 @@ const CategoriesAgents = () => {
           <div className="flex flex-col gap-[16px] sm:gap-[32px] justify-start items-center w-full">
             {/* Category Description */}
             <div className="flex flex-row gap-[8px] sm:gap-[16px] justify-center items-center w-full">
-              <div className="bg-global-1 rounded-[16px] p-[10px] sm:p-[20px] w-[50px] sm:w-[100px] h-[50px] sm:h-[100px] flex justify-center items-center">
+              {/* <div className="bg-global-1 rounded-[16px] p-[10px] sm:p-[20px] w-[50px] sm:w-[100px] h-[50px] sm:h-[100px] flex justify-center items-center">
                 <img 
-                  src={categoryData?.image || "/images/BackgroundAWP.png"} 
-                  alt="category icon" 
+                  src={agentsData.image || "/placeholder.jpg"} 
                   className="w-[30px] h-[30px] sm:w-[60px] sm:h-[60px]"
                 />
-              </div>
+              </div> */}
               <div className="flex flex-col gap-[3px] sm:gap-[6px] justify-start items-start flex-1">
                 <h3 className="text-[18px] sm:text-[22px] font-semibold leading-[23px] sm:leading-[28px] text-global-5 font-sora">
                   {headerTitle}
@@ -93,7 +102,7 @@ const CategoriesAgents = () => {
                     <div className="flex flex-row justify-center items-center w-full">
                       {/* Card Icon */}
                       <div className="w-[53px] h-[29px] sm:w-[106px] sm:h-[58px] bg-global-1 rounded-[8px] flex items-center justify-center">
-                        {agent.image && agent.image !== '/placeholder.jpg' ? (
+                        {agent.image == '/placeholder.jpg' ? (
                           <img 
                             src={agent.image} 
                             alt={agent.name}
@@ -115,12 +124,12 @@ const CategoriesAgents = () => {
                           <h4 className="text-[18px] sm:text-[22px] font-semibold leading-[23px] sm:leading-[28px] text-global-5 font-sora">
                             {agent.name}
                           </h4>
-                          <a 
-                            href="#" 
-                            className="text-[14px] sm:text-[16px] mt-6 pr-5 font-normal leading-[18px] sm:leading-[20px] text-global-7 font-inter text-[#3E57DA] "
+                          <button 
+                            onClick={() => handleAgentDetail(agent.id)}
+                            className="text-[14px] sm:text-[16px] mt-2 pr-5 font-normal leading-[18px] sm:leading-[20px] text-global-7 font-inter text-[#3E57DA] hover:text-[#2E47CA] cursor-pointer"
                           >
                             Read more
-                          </a>
+                          </button>
                         </div>
                         {/* Summary/Description */}
                         <p className="text-[14px] sm:text-[16px] font-normal leading-[18px] sm:leading-[20px] text-global-6 font-inter w-full">

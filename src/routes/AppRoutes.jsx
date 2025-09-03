@@ -23,6 +23,7 @@ export default function AppRoutes() {
         
         {/* Industry-specific agents - direct access without sidebar */}
         <Route path="industry-specific-agents/:categoryId/agents" element={<CategoriesAgents />} />
+        <Route path="industry-specific-agents/:categoryId/agents/:agentId" element={<AgentsDetails />} />
         
         {/* Category selection pages */}
         <Route path=":category" >
@@ -35,6 +36,7 @@ export default function AppRoutes() {
             <Route path="agents" element={<CategoriesAgents />} />
             {/* Category Details */}
             <Route path=":subcategoryId/agents" element={<CategoriesAgents />} />
+            <Route path=":subcategoryId/agents/:agentId" element={<AgentsDetails />} />
          </Route>
 
         </Route>
