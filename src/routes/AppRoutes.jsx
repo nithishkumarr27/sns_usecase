@@ -23,7 +23,7 @@ export default function AppRoutes() {
         
         {/* Industry-specific agents - direct access without sidebar */}
         <Route path="industry-specific-agents/:categoryId/agents" element={<CategoriesAgents />} />
-        <Route path="industry-specific-agents/:categoryId/agents/:agentId" element={<AgentsDetails />} />
+        {/* <Route path="industry-specific-agents/:categoryId/agents/:agentId" element={<AgentsDetails />} /> */}
         
         {/* Category selection pages */}
         <Route path=":category" >
@@ -36,7 +36,7 @@ export default function AppRoutes() {
             <Route path="agents" element={<CategoriesAgents />} />
             {/* Category Details */}
             <Route path=":subcategoryId/agents" element={<CategoriesAgents />} />
-            <Route path=":subcategoryId/agents/:agentId" element={<AgentsDetails />} />
+            {/* <Route path=":subcategoryId/agents/:agentId" element={<AgentsDetails />} /> */}
          </Route>
 
         </Route>
@@ -45,8 +45,8 @@ export default function AppRoutes() {
         {/* <Route path=":category/:categoryId/:subcategoryId/:agentId" element={<AgentsDetails />} /> */}
         {/* <Route path=":category/:categoryId/:agentId" element={<AgentsDetails />} /> */}
     </Route>
-    <Route path="/agent-workbench/:category/:categoryId/:subcategoryId/:agentId" element={<AgentsDetails />} />
-    <Route path="/agent-workbench/:category/:categoryId/:agentId" element={<AgentsDetails />} />
+    <Route path="/agent-workbench/:category/:categoryId/:subcategoryId/agents/:agentId" element={<AgentsDetails />} />
+    <Route path="/agent-workbench/:category/:categoryId/agents/:agentId" element={<AgentsDetails />} />
     </Routes>
   );
 }

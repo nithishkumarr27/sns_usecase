@@ -102,7 +102,7 @@ const CategoriesAgents = () => {
                     <div className="flex flex-row justify-center items-center w-full">
                       {/* Card Icon */}
                       <div className="w-[53px] h-[29px] sm:w-[106px] sm:h-[58px] bg-global-1 rounded-[8px] flex items-center justify-center">
-                        {agent.image == '/placeholder.jpg' ? (
+                        {agent.image && agent.image != '/placeholder.jpg' ? (
                           <img 
                             src={agent.image} 
                             alt={agent.name}
