@@ -20,7 +20,7 @@ export default function AgentDetails() {
 
   // Get correct category dataset
   const categoryData =
-    category === "foundational"
+    category === "foundation-agents"
       ? agentsData.foundational
       : agentsData.industry;
 
@@ -29,7 +29,7 @@ export default function AgentDetails() {
 
   // For foundational, subcategory is required
   const selectedSubcategory =
-    category === "foundational"
+    category === "foundation-agents"
       ? selectedCategory?.subCategories?.find(
           (sub) => sub.id === subcategoryId
         )
@@ -37,7 +37,7 @@ export default function AgentDetails() {
 
   // Get the agent
   const selectedAgent =
-    category === "foundational"
+    category === "foundation-agents"
       ? selectedSubcategory?.agents?.find((agent) => agent.id === agentId)
       : selectedCategory?.agents?.find((agent) => agent.id === agentId);
 
