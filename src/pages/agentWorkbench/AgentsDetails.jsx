@@ -1,7 +1,7 @@
 // src/pages/Agents/AgentDetails.jsx
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import agentsData from "../../../public/data/agentsData"; // adjust path if needed
+import agentsData from "../../../public/data/agentsData"; 
 import lockImage from "../../../public/icons/Group.png";
 
 export default function AgentDetails() {
@@ -10,7 +10,7 @@ export default function AgentDetails() {
   const [activeSection, setActiveSection] = useState("About This Agent");
   const [isSignedIn, setIsSignedIn] = useState(false);
 
-  // Sidebar items: map all locked ones to "locked" id
+  // Sidebar items
   const sidebarItems = [
     { id: "about", label: "About This Agent" },
     { id: "locked", label: "Core Capabilities" },
@@ -18,22 +18,28 @@ export default function AgentDetails() {
     { id: "locked", label: "How It Works" },
   ];
 
-  // Get agent data
+  // Get correct category dataset
   const categoryData =
     category === "foundational"
       ? agentsData.foundational
       : agentsData.industry;
 
+  // Find the category
   const selectedCategory = categoryData.find((cat) => cat.id === categoryId);
 
+  // For foundational, subcategory is required
   const selectedSubcategory =
-    subcategoryId && selectedCategory?.subCategories
-      ? selectedCategory.subCategories.find((sub) => sub.id === subcategoryId)
+    category === "foundational"
+      ? selectedCategory?.subCategories?.find(
+          (sub) => sub.id === subcategoryId
+        )
       : null;
 
-  const selectedAgent = selectedSubcategory
-    ? selectedSubcategory.agents.find((agent) => agent.id === agentId)
-    : selectedCategory?.agents?.find((agent) => agent.id === agentId);
+  // Get the agent
+  const selectedAgent =
+    category === "foundational"
+      ? selectedSubcategory?.agents?.find((agent) => agent.id === agentId)
+      : selectedCategory?.agents?.find((agent) => agent.id === agentId);
 
   if (!selectedAgent) {
     return (
@@ -56,35 +62,43 @@ export default function AgentDetails() {
     <div
       className="min-h-screen w-full mt-25 p-1"
       style={{
-                 background: 'linear-gradient(180deg, #aab6e240 0px, #c2cce730 100px, #ffffffff 200px)'
-            }}
+        background:
+          "linear-gradient(180deg, #aab6e240 0px, #c2cce730 100px, #ffffffff 200px)",
+      }}
     >
       <div className="flex flex-col lg:flex-row ml-40">
         {/* Sidebar */}
-        <aside className="hidden lg:block lg:w-72 lg:sticky lg:top-12 p-4 ml-50 mt-5">
-          <div className="flex flex-col w-full lg:sticky  items-start gap-2">
-            {sidebarItems.map((item, index) => (
-              <button
-                key={index}
-                onClick={() => handleNavClick(item.id, item.label)}
-                className={`flex items-center justify-start gap-2.5 pl-4 pr-6 py-5 md:py-7 w-full rounded-2xl transition-all duration-500 ${
-                  activeSection === item.label
-                    ? "bg-white shadow-sm"
-                    : "bg-transparent hover:bg-white hover:bg-opacity-50"
-                }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                <div
-                  className={`font-semibold text-base md:text-lg ${
+        <aside className="hidden lg:block w-full lg:w-72 mb-8 lg:mb-0 p-4 ml-50 mt-5">
+          <div className="sticky top-4 lg:top-12">
+            <div className="flex flex-col w-full items-start gap-4">
+              {sidebarItems.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleNavClick(item.id, item.label)}
+                  className={`flex items-center justify-start gap-2.5 pl-4 pr-6 py-5 md:py-7 w-full rounded-2xl overflow-hidden focus:outline-none border-none outline-none transition-all duration-500 ease-out ${
                     activeSection === item.label
-                      ? "text-gray-900"
-                      : "text-gray-600"
+                      ? "bg-[#e6edfc]"
+                      : "bg-transparent"
                   }`}
+                  style={{
+                    outline: "none",
+                    border: "none",
+                    boxShadow: "none",
+                    transitionDelay: `${index * 100}ms`,
+                  }}
                 >
-                  {item.label}
-                </div>
-              </button>
-            ))}
+                  <div
+                    className={`font-Manrope font-semibold text-base md:text-lg tracking-[-0.60px] leading-6 whitespace-nowrap text-left ${
+                      activeSection === item.label
+                        ? "text-[#064EE3]"
+                        : "text-[#04040469]"
+                    }`}
+                  >
+                    {item.label}
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </aside>
 
@@ -128,7 +142,7 @@ export default function AgentDetails() {
 
             {/* Agent Image */}
             {selectedAgent.image && (
-              <div className="mb-10 w-full bg-pink ">
+              <div className="mb-10 w-full">
                 <div className="w-full max-w-6xl">
                   <div className="relative w-full h-64 md:h-96">
                     <img
@@ -151,7 +165,11 @@ export default function AgentDetails() {
 
             {/* Common Locked Section */}
             <div id="locked" className="relative mb-10">
-              <div className={`${!isSignedIn ? "blur-sm pointer-events-none" : ""}`}>
+              <div
+                className={`${
+                  !isSignedIn ? "blur-sm pointer-events-none" : ""
+                }`}
+              >
                 {/* Core Capabilities */}
                 {selectedAgent.solutions && (
                   <div className="mb-10">
