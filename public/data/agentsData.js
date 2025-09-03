@@ -4,7 +4,7 @@ foundational:[
   id: "doc-knowledge",
   name: "Document & Knowledge Management",
   description: "Manage documents and knowledge with processing, retrieval, and maintenance.",
-  image: "/undraw_add-document_oqbr.png",
+  image: "images/document_know.jpg",
   subCategories: [
     {
       id: "document-processing",
@@ -16,7 +16,7 @@ foundational:[
           id: "document-classification",
           name: "Document Classification Agent",
           summary: "Categorize documents by type with confidence and routing hints.",
-          image: "/undraw_add-document_oqbr.png",
+          image: "/placeholder.jpg",
           solutions: [
             "Multi-label classification",
             "Confidence thresholds & fallback",
@@ -72,7 +72,7 @@ foundational:[
       id: "contract-review",
       name: "Contract/Document Review",
       description: "Automated review of legal and business documents for risks, clauses, and obligations.",
-      image: "/undraw_file-analysis_dg81.png",
+      image: "images/summarization.jpg",
       agents: [
         {
           id: "clause-detection",
@@ -219,7 +219,7 @@ foundational:[
     id: "summarization",
     name: "Summarization & Content Handling",
     description: "Turn long content into concise, actionable briefs.",
-    image: "/undraw_document-analysis_3c0y.png",
+    image: "images/summarization.jpg",
     subCategories: [
       {
         id: "content-summarization",
@@ -451,7 +451,7 @@ foundational:[
     id: "communication-assistance",
     name: "Communication & Assistance",
     description: "Conversational assistance and automation.",
-    image: "/undraw_group-chat_4xw0.png",
+    image: "images/communication.jpg",
     subCategories: [
       {
         id: "live-chat-assistance",
@@ -651,13 +651,13 @@ foundational:[
     id: "business-intelligence",
     name: "Business Intelligence & Analysis",
     description: "Insights, analytics, and forecasting.",
-    image: "/undraw_status-update_7gqz.png",
+    image: "images/business_intel.jpg",
     subCategories: [
       {
         id: "market-trends-analysis",
         name: "Market Trends Analysis",
         description: "Analyze market dynamics, trends, and competitive landscape for strategic insights.",
-        image: "/placeholder.jpg",
+        image: "images/business_intel.jpg",
         agents: [
           {
             id: "trend-analyzer",
@@ -915,7 +915,7 @@ foundational:[
     id: "compliance-security",
     name: "Compliance & Security",
     description: "Ensure regulatory adherence, risk management, and system protection.",
-    image: "/undraw_safe_0mei.png",
+    image: "images/compilance.jpg",
     subCategories: [
       {
         id: "compliance-monitoring",
@@ -1043,7 +1043,7 @@ foundational:[
     id: "data-management",
     name: "Data Management",
     description: "Organize, store, retrieve, and optimize data for efficiency and insights.",
-    image: "/undraw_software-engineer_xv60.png",
+    image: "images/data_work.jpg",
     subCategories: [
       {
         id: "data-cleaning-preprocessing",

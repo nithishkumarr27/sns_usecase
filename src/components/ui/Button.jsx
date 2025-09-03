@@ -15,7 +15,7 @@ const Button = ({
   const baseClasses = 'font-semibold rounded transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer';
   
   const variants = {
-    primary: 'bg-[linear-gradient(90deg,#064ee3_0%,_#3d76ec_100%)] text-global-12 hover:opacity-90 focus:ring-blue-500',
+    primary: 'bg-[linear-gradient(90deg,#064EE3_0%,_#3d76ec_100%)] text-global-12 hover:opacity-90 focus:ring-blue-500',
     secondary: 'bg-button-1 text-button-1 hover:bg-gray-800 focus:ring-gray-500',
     outline: 'border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400',
   };

@@ -1,7 +1,12 @@
 // src/components/Footer.jsx
 import { Linkedin, Youtube } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Footer() {
+  // const Link = NavLink();
+  const [menuOpen, setMenuOpen] = useState(false);
+  
   return (
     <footer className="bg-[#0A1B3E] text-white">
       {/* Top CTA Section */}
@@ -20,37 +25,73 @@ export default function Footer() {
 
         {/* Solutions */}
         <div>
-          <h3 className="font-semibold text-blue-400 mb-4">Solutions</h3>
+          <h3 className="font-semibold text-blue-400 mb-4">Agent workbench</h3>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li>Smart City & Manufacturing</li>
-            <li>Healthcare</li>
-            <li>Agriculture & Food</li>
-            <li>Retail FMCG</li>
-            <li>Automotive & Aerospace</li>
-            <li>Defense, Government, Legal</li>
-            <li>Real Estate</li>
-            <li>Sports, Media & Entertainment</li>
-            <li>BFSI – Fintech/Banking</li>
-            <li>Power, Oil, Energy</li>
-            <li>Personal Services</li>
-          </ul>
+            <li>Foundational models</li>
+            <li>Industry specific models</li>
+          </ul> 
         </div>
 
         {/* Use Cases */}
         <div>
           <h3 className="font-semibold text-blue-400 mb-4">Use Cases</h3>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li>Supply Chain</li>
-            <li>IT Solution</li>
+            <li>
+              <Link 
+                to="/usecase" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Supply Chain
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/usecase" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                IT Solution
+              </Link>
+            </li>
           </ul>
 
           <h3 className="font-semibold text-blue-400 mt-6 mb-4">Company</h3>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li>Solutions</li>
-            <li>Use Case</li>
-            <li>Life at SNS Square</li>
-            <li>Resources</li>
-            <li>Contact us</li>
+            <li>
+              <Link 
+                to="/agent-workbench" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Agent Workbench
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/usecase" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Use cases
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/life-at-sns" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Life at SNS Square
+              </Link>
+            </li>
+            <li 
+              onClick={() => {
+                const ctaSection = document.getElementById('cta-section');
+                if (ctaSection) {
+                  ctaSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                setMenuOpen(false);
+              }}
+              className="cursor-pointer hover:text-blue-400 transition-colors"
+            >
+              Contact us
+            </li>
           </ul>
         </div>
 
@@ -77,10 +118,10 @@ export default function Footer() {
         <div>
         {/* Social Icons */}
           <div className="flex space-x-4">
-            <a href="#" className="hover:text-blue-400">
+            <a href="https://www.linkedin.com/company/snssquare/" target="_blank" className="hover:text-blue-400">
               <Linkedin size={20} />
             </a>
-            <a href="#" className="hover:text-red-500">
+            <a href="https://www.youtube.com/@snssquare" target="_blank" className="hover:text-red-500">
               <Youtube size={20} />
             </a>
           </div>
