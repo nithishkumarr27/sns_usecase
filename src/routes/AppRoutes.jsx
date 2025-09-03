@@ -35,8 +35,11 @@ export default function AppRoutes() {
      
 
         {/* Agent Details */}
-        <Route path=":category/:categoryId/:subcategoryId/:agentId" element={<AgentsDetails />} />
+        {/* <Route path=":category/:categoryId/:subcategoryId/:agentId" element={<AgentsDetails />} /> */}
+        {/* <Route path=":category/:categoryId/:agentId" element={<AgentsDetails />} /> */}
     </Route>
+    <Route path="/agent-workbench/:category/:categoryId/:subcategoryId/:agentId" element={<AgentsDetails />} />
+    <Route path="/agent-workbench/:category/:categoryId/:agentId" element={<AgentsDetails />} />
     </Routes>
   );
 }
