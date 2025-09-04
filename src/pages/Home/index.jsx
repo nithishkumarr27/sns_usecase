@@ -1,14 +1,53 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '../../components/ui/Button';
 import Lock from './Lock';
 import { useNavigate as Navigate } from 'react-router-dom';
+import { motion, AnimatePresence } from "framer-motion";
+
+const phrases = [
+  "To The Vibrant Life At SNS",
+  "To 1500+ Foundation Agents",
+  "To Use Cases That Matters"
+];
+
+const images = [
+  "/images/IMG_6488.png",
+  "/images/agent_work_bench_1.jpg",
+  "/images/usecase_1.jpg",
+  "/images/IMG_6533.png",
+  "/images/agent_work_bench_2.jpg",
+  "/images/usecase_2.jpg",
+  "/images/IMG_6534.png",
+  "/images/agent_work_bench_1.jpg",
+  "/images/usecase_1.jpg",
+  "/images/IMG_6535.png",
+  "/images/agent_work_bench_2.jpg",
+  "/images/usecase_2.jpg",
+  "/images/IMG_6586.png", 
+  "/images/agent_work_bench_1.jpg",
+  "/images/usecase_1.jpg",
+   "/images/IMG_6676.png",
+   "/images/agent_work_bench_2.jpg",
+   "/images/usecase_2.jpg",
+   "/images/IMG_7778.png"// for third phrase
+];
 
 const Home = () => {
   const navigate = Navigate();
+  const [index, setIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length); // Changed from phrases.length to images.length
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+  
+
   return (
     <div className="w-full bg-white min-h-screen">
-      {/* Hero Section */}
-      <div className="relative w-full h-auto min-h-[600px] sm:min-h-[700px] md:min-h-[800px] overflow-hidden">
+      {/* Hero Section - Added top padding to account for fixed header */}
+      <div className="relative w-full h-auto min-h-[500px] xs:min-h-[550px] sm:min-h-[600px] md:min-h-[650px] lg:min-h-[700px] xl:min-h-[750px] 2xl:min-h-[800px] overflow-hidden pt-16 xs:pt-18 sm:pt-20 md:pt-8 lg:pt-2 xl:pt-3 2xl:pt-4">
         {/* Background Pattern */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
@@ -18,33 +57,201 @@ const Home = () => {
         {/* Hero Content */}
         <section className="w-full bg-[linear-gradient(359deg,#ffffff_0%,_#e3ebff_100%)] relative">
           <div 
-            className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[802px] bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/images/hero_frame.png')" }}
+            className="w-full h-[500px] xs:h-[550px] sm:h-[600px] md:h-[650px] lg:h-[700px] xl:h-[750px] 2xl:h-[802px] bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/images/HomeHero.png')" }}
           >
-            <div className="w-full max-w-[1224px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center items-center">
-              <div className="flex flex-col gap-[20px] sm:gap-[30px] md:gap-[40px] lg:gap-[54px] justify-start items-center w-full text-center">
-                {/* Main Heading */}
-                <h1 className="text-[24px] sm:text-[32px] md:text-[48px] lg:text-[64px] font-sora pt-[100px] sm:pt-[140px] md:pt-[160px] lg:pt-[190px] font-extrabold leading-[28px] sm:leading-[40px] md:leading-[56px] lg:leading-[80px] text-center text-global-1 w-full px-2">
-                  <span className="text-global-1">We partner with you in your </span>
-                  <br className="hidden sm:block"/>
-                  <span className="text-global-5 text-[#064EE3]">Agentic Solution</span>
-                  <span className="text-global-1"> Journey.</span>
-                </h1>
+            <div className="w-full max-w-[320px] xs:max-w-[375px] sm:max-w-[425px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1200px] 2xl:max-w-[1300px] mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 h-full">
+              
+              {/* Mobile and Small Tablet Layout (< 768px) - Stacked */}
+              <div className="md:hidden flex flex-col items-center justify-center h-full gap-6 text-center py-4">
+                {/* Left Content Container */}
+                <div className="flex flex-col gap-[6px] xs:gap-[8px] sm:gap-[10px] w-full">
+                  {/* Small Header */}
+                  <div className="text-[16px] xs:text-[18px] sm:text-[20px] font-manrope font-[700] text-global-1">
+                    Agentic AI Breakthroughs
+                  </div>
+                  
+                  {/* Main Heading with Slide Animation */}
+                  <h1 className="text-[14px] xs:text-[15px] sm:text-[16px] font-manrope font-extrabold leading-[16px] xs:leading-[17px] sm:leading-[18px] text-global-1 h-[18px] xs:h-[19px] sm:h-[20px] overflow-hidden">
+                    <AnimatePresence mode="wait">
+                    <motion.span
+  key={phrases[index % phrases.length]} // Changed from phrases[index]
+  initial={{ y: "100%", opacity: 0 }}
+  animate={{ y: "0%", opacity: 1 }}
+  exit={{ y: "-100%", opacity: 0 }}
+  transition={{ duration: 0.6, ease: "easeInOut" }}
+  className="block text-[#064EE3]"
+>
+  {phrases[index % phrases.length]} {/* Changed from phrases[index] */}
+</motion.span>
 
-                {/* Subtitle */}
-                <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px] font-inter font-normal leading-[18px] sm:leading-[20px] md:leading-[22px] lg:leading-[26px] text-center text-global-1 w-full max-w-[800px] px-2">
-                  We help forward-looking companies unlock value with agentic solutions powered by AI, data intelligence, and scalable platforms.
-                </p>
+                    </AnimatePresence>
+                  </h1>
+                  
+                  {/* Subtitle */}
+                  <h2 className="text-[16px] xs:text-[18px] sm:text-[20px] font-manrope font-[700] leading-[18px] xs:leading-[20px] sm:leading-[22px] text-global-1">
+                    Everything Unfolds Here
+                  </h2>
+                  
+                  {/* Description */}
+                  <p className="text-[12px] xs:text-[13px] sm:text-[14px] font-manrope font-light leading-[14px] xs:leading-[15px] sm:leading-[16px] text-global-1 mt-[8px] xs:mt-[10px] sm:mt-[12px]">
+                    Access 1500+ Foundation Models, Ready for you
+                  </p>
+                  
+                  {/* CTA Button */}
+                  <Button
+                    variant="primary"
+                    size="medium"
+                    className="rounded-[16px] xs:rounded-[18px] sm:rounded-[20px] px-4 xs:px-5 sm:px-6 py-[8px] xs:py-[10px] sm:py-[12px] text-[10px] xs:text-[11px] sm:text-xs font-semibold text-white w-fit mx-auto mt-[12px] xs:mt-[14px] sm:mt-[16px]"
+                    onClick={() => {}}
+                  >
+                    Start Your Agentic Journey
+                  </Button>
+                </div>
+                
+                {/* Right Image Container - 40% */}
+<div className="md:col-span-4 flex justify-center lg:justify-end">
+  <div className="relative w-[450px] h-[450px] max-w-[280px] lg:max-w-[360px] xl:max-w-[400px] 2xl:max-w-[450px]">
+    {/* Main Image Card */}
+    <div className="relative bg-white rounded-[32px] shadow-xl overflow-hidden w-full h-full">
+      <AnimatePresence mode="wait">
+        <motion.img 
+          key={images[index]}
+          src={images[index]} 
+          alt="Hero related visual"
+          className="w-full h-full object-cover"
+          style={{ 
+            width: '450px', 
+            height: '450px', 
+            borderRadius: '32px',
+            opacity: 1 
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+        />
+      </AnimatePresence>
+      {/* Overlay Content */}
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+        <div className="text-white">
+          <h3 className="font-semibold text-sm mb-1">
+            Culture, Crafted with Pur...
+          </h3>
+          <div className="flex items-center justify-between">
+            <span className="text-xs opacity-90">Life at SNS Square</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                {/* CTA Button */}
-                <Button
-                  variant="primary"
-                  size="medium"
-                  className="rounded-[26px] px-4 sm:px-6 py-[12px] sm:py-[14px] text-sm sm:text-base font-semibold text-white"
-                  onClick={() => {}}
-                >
-                  Start Your Agentic Journey
-                </Button>
+    <div className="flex gap-2 mt-4 justify-center">
+      {images.map((_, i) => (
+        <div
+          key={i}
+          className={`h-2 rounded-full transition-all duration-500 ${
+            i === index ? "bg-[#064EE3] w-20 lg:w-24 xl:w-28" : "bg-[#d3ddf5] w-20 lg:w-24 xl:w-28 opacity-60"
+          }`}
+        />
+      ))}
+    </div>
+  </div>
+</div>
+
+              </div>
+
+              {/* Desktop and Large Tablet Layout (>= 768px) - Side by Side */}
+              <div className="hidden md:grid md:grid-cols-10 items-center h-full gap-8">
+                
+                {/* Left Content Container - 60% */}
+                <div className="md:col-span-6 flex flex-col gap-[10px] lg:gap-[12px] justify-center text-center lg:text-left">
+                  {/* Small Header */}
+                  <div className="text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] font-manrope font-[700] text-global-1">
+                    Agentic AI Breakthroughs
+                  </div>
+                  
+                  {/* Main Heading with Slide Animation */}
+                  <h1 className="text-[20px] lg:text-[28px] xl:text-[36px] 2xl:text-[44px] font-manrope font-extrabold leading-[24px] lg:leading-[32px] xl:leading-[42px] 2xl:leading-[52px] text-global-1 h-[26px] lg:h-[34px] xl:h-[44px] 2xl:h-[54px] overflow-hidden">
+                    <AnimatePresence mode="wait">
+                    <motion.span
+  key={phrases[index % phrases.length]} // Changed from phrases[index]
+  initial={{ y: "100%", opacity: 0 }}
+  animate={{ y: "0%", opacity: 1 }}
+  exit={{ y: "-100%", opacity: 0 }}
+  transition={{ duration: 0.6, ease: "easeInOut" }}
+  className="block text-[#064EE3]"
+>
+  {phrases[index % phrases.length]} {/* Changed from phrases[index] */}
+</motion.span>
+
+                    </AnimatePresence>
+                  </h1>
+                  
+                  {/* Subtitle */}
+                  <h2 className="text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] font-manrope font-[700] leading-[28px] lg:leading-[32px] xl:leading-[38px] 2xl:leading-[44px] text-global-1">
+                    Everything Unfolds Here
+                  </h2>
+                  
+                  {/* Description */}
+                  <p className="text-[16px] lg:text-[18px] xl:text-[20px] font-manrope font-light leading-[18px] lg:leading-[22px] xl:leading-[24px] text-global-1 mt-[12px] lg:mt-[16px]">
+                    Access 1500+ Foundation Models, Ready for you
+                  </p>
+                  
+                  {/* CTA Button */}
+                  <Button
+                    variant="primary"
+                    size="medium"
+                    className="rounded-[20px] lg:rounded-[22px] xl:rounded-[24px] px-6 py-[12px] lg:py-[14px] xl:py-[16px] text-sm lg:text-base font-semibold text-white w-fit mx-auto lg:mx-0 mt-[16px] lg:mt-[20px]"
+                    onClick={() => {}}
+                  >
+                    Start Your Agentic Journey
+                  </Button>
+                </div>
+                
+                {/* Right Image Container - 40% */}
+                <div className="md:col-span-4 flex justify-center lg:justify-end">
+                  <div className="relative w-full max-w-[280px] lg:max-w-[320px] xl:max-w-[360px] 2xl:max-w-[400px]">
+                    {/* Main Image Card */}
+                    <div className="relative bg-white rounded-xl shadow-xl overflow-hidden">
+                      <AnimatePresence mode="wait">
+                        <motion.img 
+                          key={images[index]}
+                          src={images[index]} 
+                          alt="Hero related visual"
+                          className="w-full h-[280px] lg:h-[320px] xl:h-[360px] 2xl:h-[400px] object-cover"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.6 }}
+                        />
+                      </AnimatePresence>
+                      {/* Overlay Content */}
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                        <div className="text-white">
+                          <h3 className="font-semibold text-sm mb-1">
+                            Culture, Crafted with Pur...
+                          </h3>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs opacity-90">Life at SNS Square</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Indicator Bar */}
+                    <div className="flex gap-2 mt-4 justify-center">
+                      {[0, 1, 2].map((i) => ( // Changed from images.map to fixed array of 3
+                        <div
+                          key={i}
+                          className={`h-2 rounded-full transition-all duration-500 ${
+                            i === (index % 3) ? "bg-[#064EE3] w-20 lg:w-24 xl:w-28" : "bg-[#d3ddf5] w-20 lg:w-24 xl:w-28 opacity-60"
+                          }`}
+                        />
+                      ))}
+                    </div>
+
+                  </div>
+                </div>
+                
               </div>
             </div>
           </div>
@@ -52,59 +259,59 @@ const Home = () => {
       </div>
       
       {/* Feature Cards Section */}
-      <div className="relative -mt-16 sm:-mt-24 md:-mt-32 z-30 px-4 sm:px-6 lg:px-8">
+      <div className="relative z-30 px-4 xs:px-5 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="relative p-4 sm:p-6 lg:p-16">
+          <div className="relative p-4 xs:p-5 sm:p-6 lg:p-12 xl:p-16">
             {/* Feature Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-5 sm:gap-6 lg:gap-8">
               {/* Outcome Optimization Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow h-auto sm:h-[275px] flex flex-col">
-                <div className="bg-[#e6edfc] rounded-xl p-3 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
-                  <img src="/images/Frame.svg" alt="Outcome Optimization" className="w-6 h-6 sm:w-8 sm:h-8" />
+              <div className="bg-white rounded-xl lg:rounded-2xl shadow-lg p-4 xs:p-5 sm:p-6 hover:shadow-xl transition-shadow h-auto sm:h-[240px] lg:h-[260px] flex flex-col">
+                <div className="bg-[#e6edfc] rounded-lg lg:rounded-xl p-3 xs:p-4 sm:p-4 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                  <img src="/images/Frame.svg" alt="Outcome Optimization" className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" />
                 </div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-inter font-medium text-[#040404] mt-2">
+                <h3 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-inter font-medium text-[#040404] mt-3">
                   Born Agentic
                 </h3>
-                <p className="text-xs sm:text-sm font-manrope font-medium text-gray-600 mt-2 sm:mt-auto mb-4 sm:mb-[20px]">
+                <p className="text-xs xs:text-sm sm:text-sm font-manrope font-medium text-gray-600 mt-3 sm:mt-auto mb-3 xs:mb-4 sm:mb-[20px]">
                   Native to the era of autonomous AI.
                 </p>
               </div>
               
               {/* Domain Versatility Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow h-auto sm:h-[275px] flex flex-col">
-                <div className="bg-[#e6edfc] rounded-xl p-3 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
-                  <img src="/images/Frame_2.svg" alt="Domain Versatility" className="w-6 h-6 sm:w-8 sm:h-8" />
+              <div className="bg-white rounded-xl lg:rounded-2xl shadow-lg p-4 xs:p-5 sm:p-6 hover:shadow-xl transition-shadow h-auto sm:h-[240px] lg:h-[260px] flex flex-col">
+                <div className="bg-[#e6edfc] rounded-lg lg:rounded-xl p-3 xs:p-4 sm:p-4 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                  <img src="/images/Frame_2.svg" alt="Domain Versatility" className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" />
                 </div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-inter font-medium text-[#040404] mt-2">
+                <h3 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-inter font-medium text-[#040404] mt-3">
                   AI Engineering <br /> First
                 </h3>
-                <p className="text-xs sm:text-sm font-manrope font-medium text-gray-600 mt-2 sm:mt-auto mb-4 sm:mb-[20px]">
+                <p className="text-xs xs:text-sm sm:text-sm font-manrope font-medium text-gray-600 mt-3 sm:mt-auto mb-3 xs:mb-4 sm:mb-[20px]">
                   Strong foundation in AI, data, and automation.
                 </p>
               </div>
               
               {/* AI Engineering Fast Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow h-auto sm:h-[275px] flex flex-col">
-                <div className="bg-[#e6edfc] rounded-xl p-3 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
-                  <img src="/images/Frame_3.svg" alt="AI Engineering Fast" className="w-6 h-6 sm:w-8 sm:h-8" />
+              <div className="bg-white rounded-xl lg:rounded-2xl shadow-lg p-4 xs:p-5 sm:p-6 hover:shadow-xl transition-shadow h-auto sm:h-[240px] lg:h-[260px] flex flex-col">
+                <div className="bg-[#e6edfc] rounded-lg lg:rounded-xl p-3 xs:p-4 sm:p-4 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                  <img src="/images/Frame_3.svg" alt="AI Engineering Fast" className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" />
                 </div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-inter font-medium text-[#040404] mt-2">
+                <h3 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-inter font-medium text-[#040404] mt-3">
                   Domain Versatility
                 </h3>
-                <p className="text-xs sm:text-sm font-manrope font-medium text-gray-600 mt-2 sm:mt-auto mb-4 sm:mb-[20px]">
+                <p className="text-xs xs:text-sm sm:text-sm font-manrope font-medium text-gray-600 mt-3 sm:mt-auto mb-3 xs:mb-4 sm:mb-[20px]">
                   Solutions that adapt across industries.
                 </p>
               </div>
               
               {/* Fast Agentic Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow h-auto sm:h-[275px] flex flex-col">
-                <div className="bg-[#e6edfc] rounded-xl p-3 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
-                  <img src="/images/Frame_4.svg" alt="Fast Agentic" className="w-6 h-6 sm:w-8 sm:h-8" />
+              <div className="bg-white rounded-xl lg:rounded-2xl shadow-lg p-4 xs:p-5 sm:p-6 hover:shadow-xl transition-shadow h-auto sm:h-[240px] lg:h-[260px] flex flex-col">
+                <div className="bg-[#e6edfc] rounded-lg lg:rounded-xl p-3 xs:p-4 sm:p-4 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                  <img src="/images/Frame_4.svg" alt="Fast Agentic" className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" />
                 </div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-inter font-medium text-[#040404] mt-2">
+                <h3 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-inter font-medium text-[#040404] mt-3">
                   Outcome obsession
                 </h3>
-                <p className="text-xs sm:text-sm font-manrope font-medium text-gray-600 mt-2 sm:mt-auto mb-4 sm:mb-[20px]">
+                <p className="text-xs xs:text-sm sm:text-sm font-manrope font-medium text-gray-600 mt-3 sm:mt-auto mb-3 xs:mb-4 sm:mb-[20px]">
                   Designed to deliver real impact.
                 </p>
               </div>
@@ -117,12 +324,12 @@ const Home = () => {
       <div className='mx-auto'>
         <Lock/>
       </div>
-
+      
       {/* Use Cases Section */}
-      <div className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-4 xs:px-5 sm:px-6 lg:px-8">
         <div className="w-full mx-auto">
           {/* Background with decorative elements - full width */}
-          <div className="relative bg-gradient-to-br from-blue-50 to-white rounded-3xl overflow-hidden">
+          <div className="relative bg-gradient-to-br from-blue-50 to-white rounded-xl lg:rounded-2xl overflow-hidden">
             {/* Decorative Background - full width */}
             <div 
               className="absolute inset-0 bg-cover bg-center opacity-10"
@@ -130,101 +337,101 @@ const Home = () => {
             />
             
             {/* Content Container - max width 1200px */}
-            <div className="relative z-20 max-w-[1200px] mx-auto pt-6 sm:pt-8 px-4 sm:px-6">
+            <div className="relative z-20 max-w-[320px] xs:max-w-[375px] sm:max-w-[425px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1200px] mx-auto pt-5 xs:pt-6 sm:pt-8 lg:pt-10 px-4 xs:px-5 sm:px-6">
               {/* Section Header */}
-              <div className="mb-8 sm:mb-12 lg:mb-16">
+              <div className="mb-6 xs:mb-8 sm:mb-12 lg:mb-16">
                 <Button
                   variant="secondary"
                   size="small"
-                  className="bg-[#ade5d3] text-[#040404] rounded-full px-4 sm:px-6 py-2 mb-6 sm:mb-8 text-sm"
+                  className="bg-[#ade5d3] text-[#040404] rounded-full px-4 xs:px-5 sm:px-6 py-2 xs:py-2.5 mb-5 xs:mb-6 sm:mb-8 lg:mb-10 text-xs xs:text-sm"
                   onClick={() => {}}
                 >
                   UseCases
                 </Button>
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-manrope font-bold text-[#242424] leading-tight max-w-7xl">
+                <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-manrope font-bold text-[#242424] leading-tight max-w-7xl">
                   From tech startups to global enterprises, our Agentic solutions adapt to any industry, helping leaders reimagine growth, efficiency, and customer experience.
                 </h2>
               </div>
               
               {/* Use Cases Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 lg:mb-16">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 lg:gap-8 mb-6 xs:mb-8 sm:mb-12 lg:mb-16">
                 {/* IT Development Lifecycle Card */}
-                <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow">
-                  <div className="bg-[#e6edfc] rounded-xl p-3 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-3 sm:mb-4">
-                    <img src="/images/img_background_blue_800.svg" alt="IT Development" className="w-6 h-6 sm:w-8 sm:h-8" />
+                <div className="bg-white rounded-xl lg:rounded-2xl shadow-lg p-4 xs:p-5 sm:p-6 hover:shadow-xl transition-shadow">
+                  <div className="bg-[#e6edfc] rounded-lg lg:rounded-xl p-3 xs:p-4 sm:p-4 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 flex items-center justify-center mb-3 xs:mb-4 sm:mb-4">
+                    <img src="/images/img_background_blue_800.svg" alt="IT Development" className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-sora font-semibold text-[#242424] mb-2 sm:mb-3">
+                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-sora font-semibold text-[#242424] mb-2 xs:mb-3 sm:mb-3">
                     IT Development Lifecycle
                   </h3>
-                  <p className="text-sm sm:text-[16px] font-inter text-black/80 mb-3 sm:mb-4">
+                  <p className="text-xs xs:text-sm sm:text-[16px] font-inter text-black/80 mb-3 xs:mb-4 sm:mb-4">
                     Seamless, smart, and scalable Agentic AI powers the future of IT.
                   </p>
                   <div className="flex items-center text-[#3e57da] hover:text-[#064ee3] cursor-pointer transition-colors">
-                    <span className="text-xs sm:text-sm font-inter">Learn More</span>
-                    <img src="/images/img_solar_arrow_up_linear.svg" alt="Arrow" className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                    <span className="text-xs xs:text-sm sm:text-sm font-inter">Learn More</span>
+                    <img src="/images/img_solar_arrow_up_linear.svg" alt="Arrow" className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 ml-2" />
                   </div>
                 </div>
                 
                 {/* Supply Chain Card */}
-                <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow">
-                  <div className="bg-[#e6edfc] rounded-xl p-3 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-3 sm:mb-4">
-                    <img src="/images/img_frame.svg" alt="Supply Chain" className="w-6 h-6 sm:w-8 sm:h-8" />
+                <div className="bg-white rounded-xl lg:rounded-2xl shadow-lg p-4 xs:p-5 sm:p-6 hover:shadow-xl transition-shadow">
+                  <div className="bg-[#e6edfc] rounded-lg lg:rounded-xl p-3 xs:p-4 sm:p-4 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 flex items-center justify-center mb-3 xs:mb-4 sm:mb-4">
+                    <img src="/images/img_frame.svg" alt="Supply Chain" className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-sora font-semibold text-[#242424] mb-2 sm:mb-3">
+                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-sora font-semibold text-[#242424] mb-2 xs:mb-3 sm:mb-3">
                     Supply Chain
                   </h3>
-                  <p className="text-sm sm:text-[16px] font-inter text-black/80">
+                  <p className="text-xs xs:text-sm sm:text-[16px] font-inter text-black/80">
                     From demand to delivery, every link learns, decides, and acts in real time
                   </p>
                 </div>
                 
                 {/* Healthcare Card */}
-                <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow">
-                  <div className="bg-[#e6edfc] rounded-xl p-3 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-3 sm:mb-4">
-                    <img src="/images/img_frame_blue_800.svg" alt="Healthcare" className="w-6 h-6 sm:w-8 sm:h-8" />
+                <div className="bg-white rounded-xl lg:rounded-2xl shadow-lg p-4 xs:p-5 sm:p-6 hover:shadow-xl transition-shadow">
+                  <div className="bg-[#e6edfc] rounded-lg lg:rounded-xl p-3 xs:p-4 sm:p-4 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 flex items-center justify-center mb-3 xs:mb-4 sm:mb-4">
+                    <img src="/images/img_frame_blue_800.svg" alt="Healthcare" className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-sora font-semibold text-[#242424] mb-2 sm:mb-3">
+                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-sora font-semibold text-[#242424] mb-2 xs:mb-3 sm:mb-3">
                     Healthcare
                   </h3>
-                  <p className="text-sm sm:text-[16px] font-inter text-black/80">
+                  <p className="text-xs xs:text-sm sm:text-[16px] font-inter text-black/80">
                     Partnering with hospitals to provide intelligent, personalized, and always-available healthcare solutions.
                   </p>
                 </div>
                 
                 {/* Insurance Card */}
-                <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow">
-                  <div className="bg-[#e6edfc] rounded-xl p-3 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-3 sm:mb-4">
-                    <img src="/images/img_frame_blue_800_60x60.svg" alt="Insurance" className="w-6 h-6 sm:w-8 sm:h-8" />
+                <div className="bg-white rounded-xl lg:rounded-2xl shadow-lg p-4 xs:p-5 sm:p-6 hover:shadow-xl transition-shadow">
+                  <div className="bg-[#e6edfc] rounded-lg lg:rounded-xl p-3 xs:p-4 sm:p-4 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 flex items-center justify-center mb-3 xs:mb-4 sm:mb-4">
+                    <img src="/images/img_frame_blue_800_60x60.svg" alt="Insurance" className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-sora font-semibold text-[#242424] mb-2 sm:mb-3">
+                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-sora font-semibold text-[#242424] mb-2 xs:mb-3 sm:mb-3">
                     Insurance
                   </h3>
-                  <p className="text-sm sm:text-[16px] font-inter text-black/80">
+                  <p className="text-xs xs:text-sm sm:text-[16px] font-inter text-black/80">
                     40% faster bookings, predictive demand management, and personalised guest experiences.
                   </p>
                 </div>
                 
                 {/* Human Resource Card */}
-                <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow">
-                  <div className="bg-[#e6edfc] rounded-xl p-3 sm:p-4 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-3 sm:mb-4">
-                    <img src="/images/img_frame_60x60.svg" alt="Human Resource" className="w-6 h-6 sm:w-8 sm:h-8" />
+                <div className="bg-white rounded-xl lg:rounded-2xl shadow-lg p-4 xs:p-5 sm:p-6 hover:shadow-xl transition-shadow">
+                  <div className="bg-[#e6edfc] rounded-lg lg:rounded-xl p-3 xs:p-4 sm:p-4 w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 flex items-center justify-center mb-3 xs:mb-4 sm:mb-4">
+                    <img src="/images/img_frame_60x60.svg" alt="Human Resource" className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-sora font-semibold text-[#242424] mb-2 sm:mb-3">
+                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-sora font-semibold text-[#242424] mb-2 xs:mb-3 sm:mb-3">
                     Human Resource
                   </h3>
-                  <p className="text-sm sm:text-[16px] font-inter text-black/80">
+                  <p className="text-xs xs:text-sm sm:text-[16px] font-inter text-black/80">
                     3× higher conversions using recommendation engines and customer intelligence.
                   </p>
                 </div>
-
-                <div className='flex flex-col justify-evenly max-w-[340px] gap-4 sm:gap-6'>
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-inter font-semibold leading-tight font-[600]">
+                
+                <div className='flex flex-col justify-evenly max-w-full sm:max-w-[340px] gap-4 xs:gap-5 sm:gap-6'>
+                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-inter font-semibold leading-tight font-[600]">
                     Unlock Agentic AI Solutions for Your Industry.
                   </h3>
                   <Button
                     variant="primary"
                     size="medium"
-                    className="rounded-full px-4 sm:px-6 py-3 text-sm sm:text-base font-inter font-semibold text-white w-full sm:max-w-[250px] h-[44px] sm:h-[50px]"
+                    className="rounded-full px-4 xs:px-5 sm:px-6 py-3 xs:py-3.5 text-xs xs:text-sm sm:text-base font-inter font-semibold text-white w-full sm:max-w-[250px] h-[40px] xs:h-[44px] sm:h-[48px] lg:h-[50px]"
                     onClick={() => {navigate("/usecase")}}
                   >
                     Explore Agentic Use Case
@@ -237,56 +444,55 @@ const Home = () => {
       </div>
       
       {/* Solutions Section */}
-      <div className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-50/50 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-sora font-semibold leading-tight">
+      <div className="py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-gray-50/50 px-4 xs:px-5 sm:px-6 lg:px-8">
+        <div className="max-w-[320px] xs:max-w-[375px] sm:max-w-[425px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1200px] mx-auto">
+          <div className="mb-6 xs:mb-8 sm:mb-12">
+            <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-sora font-semibold leading-tight">
               <span className="text-[#064ee3]">Beyond Code. <br /></span>
               <span className="text-[#242424]">Into impact with Agentic Solutions</span>
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 xs:gap-6 sm:gap-8 lg:gap-8">
             {/* Main Solution Card */}
             <div className="lg:col-span-2">
               <div className="bg-gradient-to-b from-white via-blue-50/50 to-blue-100 
-                  border border-gray-200 rounded-2xl 
-                  pt-6 pl-6 sm:pt-8 sm:pl-8 lg:pt-12 lg:pl-12 
+                  border border-gray-200 rounded-xl lg:rounded-2xl 
+                  pt-5 pl-5 xs:pt-6 xs:pl-6 sm:pt-8 sm:pl-8 lg:pt-10 lg:pl-10 xl:pt-12 xl:pl-12 
                   pr-0 pb-0
                   h-full flex flex-col justify-between">  
-                <div className="space-y-4 sm:space-y-6">
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-manrope font-bold text-[#242424] leading-tight max-w-xl">
+                <div className="space-y-4 xs:space-y-5 sm:space-y-6">
+                  <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-manrope font-bold text-[#242424] leading-tight max-w-xl">
                     Redefining Solutions in the Agentic Era
                   </h3>
-                  <p className="text-sm sm:text-base lg:text-lg font-inter text-[#242424]/70 leading-relaxed max-w-xl">
+                  <p className="text-xs xs:text-sm sm:text-base lg:text-lg font-inter text-[#242424]/70 leading-relaxed max-w-xl">
                     We do not build with old playbooks. We engineer with AI-first principles to solve the problems that truly matter.
                   </p>
                 </div>
-                <div className="flex justify-end sm:pt-8">
+                <div className="flex justify-end pt-5 xs:pt-6 sm:pt-8">
                   <img 
                     src="/images/image_11.png" 
                     alt="Solutions Illustration" 
-                    className="w-300 h-auto object-cover rounded-xl"
+                    className="w-full max-w-[180px] xs:max-w-[200px] sm:max-w-[240px] lg:max-w-[280px] h-auto object-cover rounded-lg lg:rounded-xl"
                   />
                 </div>
               </div>
             </div>
             
             {/* Feature Cards Column */}
-            <div className="space-y-4 sm:space-y-6 flex flex-col justify-center">
+            <div className="space-y-4 xs:space-y-5 sm:space-y-6 flex flex-col justify-center">
               {/* Innovation at Core */}
-              <div className="bg-[#EEF8FF] rounded-2xl p-4 sm:p-6 lg:p-10 relative overflow-hidden">
+              <div className="bg-[#EEF8FF] rounded-xl lg:rounded-2xl p-4 xs:p-5 sm:p-6 lg:p-8 xl:p-10 relative overflow-hidden">
                   {/* Text Section */}
                   <div className="relative z-10 max-w-lg">
-                    <h4 className="text-lg sm:text-xl lg:text-2xl font-manrope font-bold text-[#040404] mb-3 sm:mb-4">
+                    <h4 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-manrope font-bold text-[#040404] mb-3 xs:mb-4 sm:mb-4">
                       Innovation at Core
                     </h4>
-                    <p className="text-xs sm:text-sm lg:text-base font-inter text-[#242424]/70 leading-relaxed">
+                    <p className="text-xs xs:text-sm sm:text-sm lg:text-base font-inter text-[#242424]/70 leading-relaxed">
                       We constantly evolve, experiment, and push boundaries, bringing you
                       future-ready solutions that stay ahead of change.
                     </p>
                   </div>
-
                   {/* Image Section */}
                   <img
                     src="/images/innova_banner.png"
@@ -295,16 +501,16 @@ const Home = () => {
                   />
                 </div>                  
               {/* AI-Only Engineering */}
-              <div className="bg-[#FBEAFF] rounded-2xl pt-0 pr-0 pb-4 pl-4 sm:pb-6 sm:pl-6 lg:pb-10 lg:pl-10">
+              <div className="bg-[#FBEAFF] rounded-xl lg:rounded-2xl pt-0 pr-0 pb-4 pl-4 xs:pb-5 xs:pl-5 sm:pb-6 sm:pl-6 lg:pb-8 lg:pl-8 xl:pb-10 xl:pl-10">
                 <img 
                   src="/images/engine_start.png" 
                   alt="Solutions Illustration" 
-                  className="w-20 sm:w-28 lg:w-32 h-auto object-cover rounded-xl mx-auto mb-0 mr-0"
+                  className="w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 h-auto object-cover rounded-lg lg:rounded-xl mx-auto mb-0 mr-0"
                 />
-                <h4 className="text-lg sm:text-xl lg:text-2xl font-manrope font-bold text-[#040404] mb-3 sm:mb-4">
+                <h4 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-manrope font-bold text-[#040404] mb-3 xs:mb-4 sm:mb-4">
                   AI-Only Engineering
                 </h4>
-                <p className="text-xs sm:text-sm lg:text-base font-inter text-[#242424]/70 leading-relaxed">
+                <p className="text-xs xs:text-sm sm:text-sm lg:text-base font-inter text-[#242424]/70 leading-relaxed">
                   We do not build with old playbooks. We engineer with AI-first principles to solve the problems that truly matter.
                 </p>
               </div>
