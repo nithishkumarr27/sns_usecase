@@ -24,14 +24,6 @@ export default function Hero() {
           We are a culture of bold thinkers and fearless doers. Here, boundaries fade, routines transform into freedom, and creativity flows without limits. 
         </p>
 
-        <div className="mt-8 sm:mt-10 lg:mt-12 flex justify-center px-4 sm:px-0">
-          <a
-            href="#"
-            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#1E63FF] to-[#1557F5] px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 text-sm sm:text-base lg:text-lg font-semibold text-white shadow-sm transition-shadow hover:shadow-md focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1557F5] w-full sm:w-auto max-w-xs sm:max-w-none"
-          >
-            Start Your Agentic Journey
-          </a>
-        </div>
       </div>
     </section>
   )

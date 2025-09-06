@@ -3,7 +3,7 @@ import Button from './ui/Button';
 
 const CTASection = () => {
   return (
-    <section className="w-full mt-[50px] sm:mt-[80px] md:mt-[100px] mb-20 px-4 sm:px-6 lg:px-8">
+    <section id="cta-section" className="w-full mt-[50px] sm:mt-[80px] md:mt-[100px] mb-20 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-[1200px] mx-auto">
 <div
   className="border border-[#e3e0e0] rounded-[32px] p-6 sm:p-8 md:p-12 bg-cover bg-center bg-no-repeat"
@@ -31,28 +31,27 @@ const CTASection = () => {
               {/* Email Input and CTA */}
              <div className="w-full bg-global-7 rounded-[32px] p-2 sm:p-4 mt-8 sm:mt-12">
             <div className="w-full max-w-3xl mx-auto">
-  <div className="flex flex-col [@media(min-width:530px)]:relative [@media(min-width:530px)]:block w-full">
-    {/* Input */}
-    <input
-      type="email"
-      placeholder="Enter your email address"
-      className="w-full h-16 [@media(min-width:530px)]:h-20 rounded-full pl-6 [@media(min-width:530px)]:pr-40 text-sm sm:text-base font-inter font-light text-global-3 bg-white border-none outline-none mb-3 [@media(min-width:530px)]:mb-0"
-    />
+            <div className="flex flex-col [@media(min-width:530px)]:relative [@media(min-width:530px)]:block w-full">
+              {/* Input */}
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                className="w-full h-16 [@media(min-width:530px)]:h-20 rounded-full pl-6 [@media(min-width:530px)]:pr-40 text-sm sm:text-base font-inter font-light text-global-3 bg-white border-none outline-none mb-3 [@media(min-width:530px)]:mb-0"
+              />
 
-    {/* Button */}
-    <Button
-      variant="primary"
-      size="medium"
-      className="w-full text-white [@media(min-width:530px)]:w-auto [@media(min-width:530px)]:absolute [@media(min-width:530px)]:top-1/2 [@media(min-width:530px)]:right-2 [@media(min-width:530px)]:-translate-y-1/2 rounded-[26px] px-6 py-[14px] text-base font-semibold"
-      onClick={() => {}}
-    >
-      Talk to an Expert
-    </Button>
-  </div>
-</div>
-
+              {/* Button */}
+              <Button
+                variant="primary"
+                size="medium"
+                className="w-full text-white [@media(min-width:530px)]:w-auto [@media(min-width:530px)]:absolute [@media(min-width:530px)]:top-1/2 [@media(min-width:530px)]:right-2 [@media(min-width:530px)]:-translate-y-1/2 rounded-[26px] px-6 py-[14px] text-base font-semibold"
+                onClick={() => {}}
+              >
+                Talk to an Expert
+              </Button>
+            </div>
           </div>
 
+          </div>
               </div>
             </div>
           </div>
