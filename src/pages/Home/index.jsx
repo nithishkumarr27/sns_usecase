@@ -3,7 +3,6 @@ import Button from '../../components/ui/Button';
 import Lock from './Lock';
 import { useNavigate as Navigate } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
-import { OrbitingCircles } from '../../components/ui/Orbiting-circles';
 
   const phrases = [
     "To The Vibrant Life At SNS",
@@ -32,18 +31,19 @@ import { OrbitingCircles } from '../../components/ui/Orbiting-circles';
 
   const images = [
     "/images/Img one 2.webp",
+    "/images/Foundational Agents.webp",
     "/images/Supplychain (1).webp",
     "/images/Img three.webp",
+    "/images/Foundational Agents.webp",
     "/images/IT solution (1).webp",
     "/images/Img two_2 2.webp",
+    "/images/Foundational Agents.webp",
     "/images/Supplychain (1).webp",
-    "/images/Img one 2.webp",
-    "/images/IT solution (1).webp",
     "/images/Img three.webp", 
-    "/images/Supplychain (1).webp",
-    "/images/Img two_2 2.webp",    
-    "/images/IIT solution (1).webp",
-    "/images/Img one 2.webp"
+    "/images/Foundational Agents.webp",
+    "/images/IT solution (1).webp",    
+    "/images/Img one 2.webp",
+    "/images/Foundational Agents.webp"
   ];
 
 // Dynamic content for each button type
