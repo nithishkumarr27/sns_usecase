@@ -102,12 +102,12 @@ const Home = () => {
                 {/* Text Content - Increased sizes */}
                 <div className="flex flex-col gap-3 xs:gap-4 w-full px-2">
                   {/* Small Header */}
-                  <div className="text-[16px] xs:text-[18px] sm:text-[20px] font-manrope font-[700] text-global-1">
+                  <div className="text-[20px] xs:text-[24px] sm:text-[28px] font-manrope font-[800] text-global-1">
                     Agentic AI Breakthroughs
                   </div>
                   
                   {/* Main Heading with Slide Animation */}
-                  <h1 className="text-[14px] xs:text-[15px] sm:text-[16px] font-manrope font-extrabold leading-[16px] xs:leading-[17px] sm:leading-[18px] text-global-1 h-[18px] xs:h-[19px] sm:h-[20px] overflow-hidden">
+                  <h1 className="text-[18px] xs:text-[20px] sm:text-[22px] font-manrope font-[600] leading-[18px] xs:leading-[20px] sm:leading-[22px] text-global-1 h-[18px] xs:h-[20px] sm:h-[22px] overflow-hidden">
                     <AnimatePresence mode="wait">
                       <motion.span
                         key={phrases[index % phrases.length]}
@@ -124,12 +124,12 @@ const Home = () => {
                   </h1>
                   
                   {/* Subtitle */}
-                  <h2 className="text-[16px] xs:text-[18px] sm:text-[20px] font-manrope font-[700] leading-[18px] xs:leading-[20px] sm:leading-[22px] text-global-1">
+                  <h2 className="text-[20px] xs:text-[24px] sm:text-[28px] font-manrope font-[800] leading-[20px] xs:leading-[24px] sm:leading-[28px] text-global-1">
                     Everything Unfolds Here
                   </h2>
                   
                   {/* Description */}
-                  <p className="text-[12px] xs:text-[13px] sm:text-[14px] font-manrope font-light leading-[14px] xs:leading-[15px] sm:leading-[16px] text-global-1 mt-2 xs:mt-3">
+                  <p className="text-[10px] xs:text-[11px] sm:text-[12px] font-manrope font-light leading-[12px] xs:leading-[13px] sm:leading-[14px] text-global-1 mt-2 xs:mt-3 whitespace-nowrap">
                     Access 1500+ Foundation Models, Ready for you
                   </p>
                   
@@ -146,7 +146,7 @@ const Home = () => {
                 
                 {/* Image Container - Mobile - INCREASED SIZES */}
                 <div className="flex justify-center w-full mt-4">
-                  <div className="relative w-full max-w-[240px] xs:max-w-[260px] sm:max-w-[280px]">
+                  <div className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[350px]">
                     {/* Main Image Card */}
                     <div className="relative bg-white rounded-[32px] shadow-md overflow-hidden">
                       <AnimatePresence mode="wait">
@@ -154,7 +154,7 @@ const Home = () => {
                           key={images[index]}
                           src={images[index]} 
                           alt="Hero related visual"
-                          className="w-full h-[200px] xs:h-[220px] sm:h-[240px] object-cover"
+                          className="w-full h-[240px] xs:h-[280px] sm:h-[320px] object-cover"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
@@ -192,14 +192,14 @@ const Home = () => {
               <div className="hidden md:grid md:grid-cols-10 items-center h-full gap-8">
                 
                 {/* Left Content Container - 60% */}
-                <div className="md:col-span-6 flex flex-col gap-[10px] lg:gap-[12px] justify-center text-center lg:text-left">
+                <div className="md:col-span-6 flex flex-col gap-[8px] lg:gap-[12px] justify-center text-center lg:text-left">
                   {/* Small Header */}
-                  <div className="text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] font-manrope font-[700] text-global-1">
+                  <div className="text-[24px] md:text-[28px] lg:text-[32px] xl:text-[36px] 2xl:text-[48px] font-manrope font-[800] text-global-1 whitespace-nowrap">
                     Agentic AI Breakthroughs
                   </div>
                   
                   {/* Main Heading with Slide Animation */}
-                  <h1 className="text-[20px] lg:text-[28px] xl:text-[36px] 2xl:text-[44px] font-manrope font-extrabold leading-[24px] lg:leading-[32px] xl:leading-[42px] 2xl:leading-[52px] text-global-1 h-[26px] lg:h-[34px] xl:h-[44px] 2xl:h-[54px] overflow-hidden">
+                  <h1 className="text-[20px] md:text-[24px] lg:text-[28px] xl:text-[36px] 2xl:text-[42px] font-manrope font-[600] leading-[20px] md:leading-[24px] lg:leading-[28px] xl:leading-[36px] 2xl:leading-[42px] text-global-1 h-[20px] md:h-[24px] lg:h-[28px] xl:h-[36px] 2xl:h-[42px] overflow-hidden whitespace-nowrap">
                     <AnimatePresence mode="wait">
                       <motion.span
                         key={phrases[index % phrases.length]}
@@ -216,12 +216,12 @@ const Home = () => {
                   </h1>
                   
                   {/* Subtitle */}
-                  <h2 className="text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] font-manrope font-[700] leading-[28px] lg:leading-[32px] xl:leading-[38px] 2xl:leading-[44px] text-global-1">
+                  <h2 className="text-[24px] md:text-[28px] lg:text-[32px] xl:text-[36px] 2xl:text-[48px] font-manrope font-[800] leading-[24px] md:leading-[28px] lg:leading-[32px] xl:leading-[36px] 2xl:leading-[48px] text-global-1 whitespace-nowrap">
                     Everything Unfolds Here
                   </h2>
                   
                   {/* Description */}
-                  <p className="text-[16px] lg:text-[18px] xl:text-[20px] font-manrope font-light leading-[18px] lg:leading-[22px] xl:leading-[24px] text-global-1 mt-[12px] lg:mt-[16px]">
+                  <p className="text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] font-manrope font-light leading-[16px] md:leading-[17px] lg:leading-[18px] xl:leading-[20px] text-global-1 mt-[12px] lg:mt-[16px] whitespace-nowrap">
                     Access 1500+ Foundation Models, Ready for you
                   </p>
                   
