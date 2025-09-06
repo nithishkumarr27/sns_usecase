@@ -31,17 +31,17 @@
 
   const images = [
     "/images/Img one 2.webp",
-    "/images/Supplychain.webp",
+    "/images/Supplychain (1).webp",
     "/images/Img three.webp",
-    "/images/IT solution.webp",
+    "/images/IT solution (1).webp",
     "/images/Img two_2 2.webp",
-    "/images/Supplychain.webp",
+    "/images/Supplychain (1).webp",
     "/images/Img one 2.webp",
-    "/images/IT solution.webp",
+    "/images/IT solution (1).webp",
     "/images/Img three.webp", 
-    "/images/Supplychain.webp",
+    "/images/Supplychain (1).webp",
     "/images/Img two_2 2.webp",    
-    "/images/IT solution.webp",
+    "/images/IIT solution (1).webp",
     "/images/Img one 2.webp"
   ];
 
