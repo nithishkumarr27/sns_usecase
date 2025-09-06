@@ -10,6 +10,7 @@ import Categories from "../pages/agentWorkbench/Categories";
 import AgentWorkbenchIndex from "../pages/agentWorkbench/Index";
 import AgentWorkbenchLayout from "../pages/agentWorkbench/AgentWorkbenchLayout";
 import Sidebar from "../pages/agentWorkbench/components/Sidebar";
+import OrbitCircle from "../pages/agentWorkbench/OrbitCircle";
 export default function AppRoutes() {
   return (
     <Routes>
@@ -17,7 +18,7 @@ export default function AppRoutes() {
       <Route path="/usecase" element={<UseCase />} />
       <Route path="/usecase/:id" element={<UseCaseDetail />} />
       <Route path="/life-at-sns" element={<LifeAtSNSSquare />} />
-      <Route path="/agent-workbench" element={<AgentWorkbenchLayout />}>
+      <Route path="/agent-workbench" element={<OrbitCircle />}>
         {/* Landing Page */}
         <Route index element={<AgentWorkbenchIndex />} />
         
