@@ -10,7 +10,7 @@ import Categories from "../pages/agentWorkbench/Categories";
 import AgentWorkbenchIndex from "../pages/agentWorkbench/Index";
 import AgentWorkbenchLayout from "../pages/agentWorkbench/AgentWorkbenchLayout";
 import Sidebar from "../pages/agentWorkbench/components/Sidebar";
-import OrbitCircle from "../pages/agentWorkbench/OrbitCircle";
+import OrbitCircle from "../pages/agentWorkbench/orbitCircle";
 export default function AppRoutes() {
   return (
     <Routes>
