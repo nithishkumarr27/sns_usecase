@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { OrbitingCircles } from '../../components/ui/Orbiting-circles'
+import LoginModal from '../../components/LoginDialog';
 
 const OrbitCircle = () => {
+
+      const [isLoginOpen, setIsLoginOpen] = useState(false);
 
     const phrases = [
         "To The Vibrant Life At SNS",
@@ -307,7 +310,7 @@ const OrbitCircle = () => {
                             showExternalText={true}
                         >
                             {getNonRepeatingItems().map((item, index) => (
-                                <div key={`${activeButton}-${index}`} className="flex flex-col items-center">
+                                <div key={`${activeButton}-${index}`} className="flex flex-col items-center" onClick={() => setIsLoginOpen(true)}>
                                     <div className="bg-white rounded-full p-3 shadow-xl mb-2 border-6 border-[#dee0df]">
                                         <img
                                             src={item.icon}
@@ -343,6 +346,11 @@ const OrbitCircle = () => {
                     </div>
                 </div>
             </div>
+
+            <LoginModal
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+      />
         </div>
     )
 }
